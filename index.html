@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Identity Pixel -->
+    <script src="https://cdn.v3.identitypxl.app/pixels/59ec3aca-361a-4bcd-b153-4b67f862eba0/p.js" async></script>
+    
     <style>
         /* CSS Variables - Enhanced Enterprise Palette */
         :root {
@@ -425,7 +428,7 @@
         /* Live Activity Feed */
         .activity-ticker {
             position: absolute;
-            top: 20px;
+            top: 100px;
             right: 20px;
             background: var(--white);
             padding: 12px 20px;
@@ -433,6 +436,7 @@
             box-shadow: var(--shadow-lg);
             max-width: 300px;
             animation: slideInRight 0.8s ease-out 1s both;
+            z-index: 10;
         }
 
         @keyframes slideInRight {
@@ -2581,7 +2585,12 @@
                 };
                 
                 console.log('Form submission:', formData);
-                alert('Thank you! We will contact you within 24 hours.');
+                
+                // In production, send data to your CRM/backend here
+                // Example: fetch('/api/submit-form', { method: 'POST', body: JSON.stringify(formData) })
+                
+                // Redirect to thank you page
+                window.location.href = 'thank-you.html';
             }
         });
 
