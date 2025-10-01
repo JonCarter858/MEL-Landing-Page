@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Thank you for your interest in MEL - Enterprise franchise marketing automation platform.">
-    <title>Thank You - MEL Enterprise Franchise Marketing Platform</title>
+    <meta name="description" content="MEL - Enterprise franchise marketing automation platform. Reduce costs by 70% while ensuring 100% brand compliance.">
+    <title>MEL - Enterprise Franchise Marketing Platform | FLDC 2025</title>
     
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
     <script src="https://cdn.v3.identitypxl.app/pixels/59ec3aca-361a-4bcd-b153-4b67f862eba0/p.js" async></script>
     
     <style>
-        /* CSS Variables */
+        /* CSS Variables - Enhanced Enterprise Palette */
         :root {
             --indigo: #1e1b4b;
             --indigo-dark: #0f0d2d;
@@ -40,6 +40,9 @@
             --gray-900: #111827;
             --success: #059669;
             --success-light: #10b981;
+            --warning: #f59e0b;
+            --error: #dc2626;
+            --red: #FF5757;
             --gradient-primary: linear-gradient(135deg, #1e1b4b 0%, #312e5e 100%);
             --gradient-accent: linear-gradient(135deg, #0d9488 0%, #047857 100%);
             --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
@@ -49,6 +52,7 @@
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
             --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
         }
 
         /* Reset & Base Styles */
@@ -66,28 +70,85 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: var(--gray-800);
-            background: var(--gradient-soft);
+            background: var(--white);
             font-size: 16px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            overflow-x: hidden;
         }
 
-        /* Container */
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            z-index: 1001;
+            transition: width 0.2s ease;
+            box-shadow: 0 0 10px rgba(13, 148, 136, 0.4);
+        }
+
+        /* Skip Link - Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--teal);
+            color: var(--white);
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Container System */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Header */
+        .container-narrow {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Enhanced Focus Styles - Accessibility */
+        *:focus-visible {
+            outline: 3px solid var(--teal);
+            outline-offset: 2px;
+        }
+
+        /* Header & Navigation */
         header {
+            position: fixed;
+            top: 0;
+            width: 100%;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 1.25rem 0;
+            transition: padding 0.3s ease;
         }
 
         .logo {
@@ -119,7 +180,12 @@
             color: var(--white);
             font-weight: 800;
             font-size: 1.125rem;
+            transition: transform 0.3s ease;
             flex-shrink: 0;
+        }
+
+        .logo:hover .logo-mark {
+            transform: rotate(-5deg) scale(1.1);
         }
         
         .logo-by-wrapper {
@@ -143,19 +209,210 @@
             opacity: 0.85;
         }
 
-        /* Main Content */
-        main {
-            flex: 1;
+        .nav-links {
             display: flex;
+            gap: 2.5rem;
             align-items: center;
-            justify-content: center;
-            padding: 60px 24px;
         }
 
-        .thank-you-container {
-            max-width: 700px;
-            text-align: center;
-            animation: fadeInUp 0.8s ease-out;
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal-dark);
+        }
+
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--teal);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.btn):hover::after {
+            width: 100%;
+        }
+
+        /* Enhanced Button System */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.9375rem;
+            min-height: 44px;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: var(--white) !important;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary * {
+            color: var(--white) !important;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--teal-dark);
+            border: 2px solid var(--gray-200);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--teal);
+            background: var(--gray-50);
+        }
+
+        .btn-enterprise {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            font-size: 1.0625rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-enterprise:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .btn-micro {
+            display: block;
+            font-size: 0.75rem;
+            opacity: 0.9;
+            font-weight: 400;
+            margin-top: 0.25rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 100px;
+            background: var(--gradient-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 70%;
+            height: 150%;
+            background: radial-gradient(ellipse at center, rgba(134, 239, 172, 0.1) 0%, transparent 70%);
+            transform: rotate(-15deg);
+            animation: floatGradient 20s ease-in-out infinite;
+        }
+
+        @keyframes floatGradient {
+            0%, 100% { transform: rotate(-15deg) translateY(0); }
+            50% { transform: rotate(-15deg) translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            padding: 0.375rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--red);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--white);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.6;
+                transform: scale(1.2);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.75rem;
+            line-height: 1.1;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            max-width: 900px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
         @keyframes fadeInUp {
@@ -169,269 +426,1363 @@
             }
         }
 
-        .success-icon {
+        .hero h1 .highlight {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .hero-subhead {
+            font-size: 1.375rem;
+            line-height: 1.5;
+            color: var(--gray-600);
+            margin-bottom: 2.5rem;
+            max-width: 720px;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .hero-buttons .divider {
+            color: var(--gray-300);
+            margin: 0 0.5rem;
+        }
+
+        /* Live Activity Feed */
+        .activity-ticker {
+            position: absolute;
+            top: 100px;
+            right: 20px;
+            background: var(--white);
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            max-width: 300px;
+            animation: slideInRight 0.8s ease-out 1s both;
+            z-index: 10;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .activity-ticker::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .activity-text {
+            padding-left: 20px;
+            font-size: 0.875rem;
+            color: var(--gray-700);
+        }
+
+        /* Animated Metrics Bar */
+        .metrics-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-xl);
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 1rem;
+            border-right: 1px solid var(--gray-200);
+            position: relative;
+        }
+
+        .metric:last-child {
+            border-right: none;
+        }
+
+        .metric-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 0.5rem;
+            background: var(--gradient-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        .metric-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--indigo);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--white);
+            padding: 3rem 0;
+            border-top: 1px solid var(--gray-100);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .trust-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .trust-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+
+        .trust-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .trust-logos img {
+            height: 60px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .trust-logos img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Section Headers */
+        .section {
+            padding: 100px 0;
+            position: relative;
+            overflow: visible;
+        }
+
+        .section-alt {
+            background: var(--gray-50);
+        }
+
+        .section-dark {
+            background: var(--gradient-primary);
+            color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-eyebrow {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            color: var(--gray-900);
+        }
+
+        .section-dark .section-title {
+            color: var(--white);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .section-dark .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Governance Cards */
+        .governance-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .governance-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border-top: 3px solid var(--teal);
+            transform-style: preserve-3d;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .governance-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        .governance-card:hover {
+            transform: translateY(-4px) rotateX(5deg);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .governance-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .governance-card:hover .governance-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .governance-card h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.75rem;
+        }
+
+        .governance-card p {
+            font-size: 0.9375rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* Process Steps */
+        .process-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-line {
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal) 0%, var(--mint) 100%);
+            z-index: 0;
+            opacity: 0;
+            animation: expandWidth 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes expandWidth {
+            from {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .process-step.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        .step-circle {
             width: 80px;
             height: 80px;
-            background: var(--gradient-success);
+            background: var(--white);
+            border: 3px solid var(--teal);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 2rem;
-            animation: scaleIn 0.5s ease-out 0.3s both;
-        }
-
-        @keyframes scaleIn {
-            from {
-                transform: scale(0);
-            }
-            to {
-                transform: scale(1);
-            }
-        }
-
-        .success-icon svg {
-            width: 40px;
-            height: 40px;
-            stroke: white;
-            stroke-width: 3;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--gray-900);
-            margin-bottom: 1rem;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-            color: var(--gray-600);
-            margin-bottom: 3rem;
-            line-height: 1.5;
-        }
-
-        .info-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-xl);
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .info-card h2 {
+            margin: 0 auto 1.5rem;
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--indigo);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            color: var(--teal);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
         }
 
-        .info-card h2::before {
-            content: '';
-            width: 6px;
-            height: 24px;
+        .process-step:hover .step-circle {
             background: var(--gradient-accent);
-            border-radius: 3px;
+            color: var(--white);
+            transform: scale(1.1);
         }
 
-        .info-list {
-            list-style: none;
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.75rem;
+        }
+
+        .step-description {
+            color: var(--gray-600);
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* Interactive ROI Calculator */
+        .roi-calculator {
+            background: var(--gradient-primary);
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            box-shadow: var(--shadow-2xl);
+            color: var(--white);
+        }
+
+        .roi-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .roi-inputs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
             margin-bottom: 2rem;
         }
 
-        .info-list li {
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--gray-200);
+        .roi-input-group {
             display: flex;
-            align-items: center;
-            gap: 1rem;
+            flex-direction: column;
+        }
+
+        .roi-input-group label {
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .roi-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+            transition: background 0.3s;
+        }
+
+        .roi-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--mint);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .roi-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .roi-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--mint);
+        }
+
+        .roi-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .roi-result {
+            padding: 1rem;
+        }
+
+        .roi-result-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--mint);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .roi-result-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Comparison Table */
+        .comparison-wrapper {
+            max-width: 1100px;
+            margin: 20px auto 0;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: visible;
+            box-shadow: var(--shadow-2xl);
+            position: relative;
+            padding-top: 15px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .comparison-table thead {
+            background: var(--gradient-primary);
+        }
+
+        .comparison-table th {
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--white);
             font-size: 1rem;
+        }
+
+        .comparison-table th:first-child {
+            background: var(--indigo-dark);
+            font-weight: 700;
+        }
+
+        .comparison-table th.featured {
+            background: var(--teal);
+            position: relative;
+            padding-top: 1.5rem;
+        }
+
+        .comparison-table th.featured::before {
+            content: 'RECOMMENDED';
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--mint);
+            color: var(--indigo);
+            padding: 4px 14px;
+            border-radius: 100px;
+            font-size: 0.625rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            z-index: 10;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table tbody tr {
+            border-bottom: 1px solid var(--gray-100);
+            transition: all 0.2s ease;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: var(--gray-50);
+            transform: scale(1.01);
+        }
+
+        .comparison-table td {
+            padding: 1.25rem 1.5rem;
+            font-size: 0.9375rem;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--gray-900);
+            background: var(--gray-50);
+        }
+
+        .comparison-table td.featured {
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.05) 0%, rgba(13, 148, 136, 0.08) 100%);
+            font-weight: 600;
+            color: var(--teal-dark);
+            border-left: 2px solid var(--teal);
+            border-right: 2px solid var(--teal);
+        }
+
+        .comparison-table tbody tr:last-child td.featured {
+            border-bottom: 2px solid var(--teal);
+        }
+
+        .check {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-right: 0.25rem;
+        }
+
+        .cross {
+            color: var(--error);
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-right: 0.25rem;
+        }
+        
+        .comparison-table td.featured .check {
+            color: var(--teal-dark);
+        }
+
+        /* Case Studies */
+        .case-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .case-tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
             color: var(--gray-700);
         }
 
-        .info-list li:last-child {
-            border-bottom: none;
+        .case-tab.active {
+            background: var(--gradient-accent);
+            border-color: var(--teal);
+            color: var(--white);
+            transform: translateY(-2px);
         }
 
-        .check-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--mint-soft);
+        .case-content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .case-panel {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .case-panel.active {
+            display: block;
+        }
+
+        .case-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .case-header {
+            padding: 2rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
+        }
+
+        .case-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .case-industry {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .case-content {
+            padding: 2rem;
+        }
+
+        .case-narrative {
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .case-metric {
+            text-align: center;
+        }
+
+        .case-metric-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .case-metric-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+
+        /* Countdown Timer */
+        .countdown-wrapper {
+            background: var(--gradient-success);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .countdown-label {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .countdown-unit {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            min-width: 60px;
+        }
+
+        .countdown-value {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--white);
+            display: block;
+        }
+
+        .countdown-label-small {
+            font-size: 0.625rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+        }
+
+        /* Urgency Banner */
+        .urgency-banner {
+            background: var(--red);
+            color: var(--white);
+            padding: 0.75rem;
+            text-align: center;
+            font-weight: 600;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 997;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .urgency-banner.show {
+            transform: translateY(0);
+        }
+
+        /* Development Features */
+        .dev-features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .dev-feature {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .dev-feature.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 0.6s ease;
+        }
+
+        .dev-feature-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            transition: transform 0.3s ease;
         }
 
-        .check-icon svg {
-            width: 14px;
-            height: 14px;
-            stroke: var(--teal-dark);
-            stroke-width: 3;
+        .dev-feature:hover .dev-feature-icon {
+            transform: rotate(-5deg) scale(1.1);
         }
 
-        .cta-section {
-            background: var(--gradient-primary);
-            padding: 2rem;
-            border-radius: 12px;
-            color: var(--white);
-            margin-bottom: 2rem;
-        }
-
-        .cta-section h3 {
-            font-size: 1.25rem;
+        .dev-feature-content h4 {
+            font-size: 1.125rem;
             font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .dev-feature-content p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Event CTA */
+        .event-cta {
+            background: linear-gradient(135deg, var(--mint) 0%, var(--teal) 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .event-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .event-badge {
+            display: inline-block;
+            background: var(--red);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .event-cta h2 {
+            font-size: 3rem;
+            color: var(--white);
             margin-bottom: 1rem;
         }
 
-        .cta-section p {
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
+        .event-cta p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 600px;
+            margin: 0 auto 2rem;
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.875rem 2rem;
-            border-radius: 6px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: none;
+        .event-limit {
             font-size: 1rem;
-            letter-spacing: -0.01em;
-        }
-
-        .btn-primary {
-            background: var(--white);
-            color: var(--teal-dark);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--gray-600);
-            border: 2px solid var(--gray-300);
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
             margin-top: 1rem;
         }
 
-        .btn-secondary:hover {
+        .spots-remaining {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--red);
+            margin: 0 0.5rem;
+        }
+
+        /* Form */
+        .form-section {
+            padding: 100px 0;
+            background: var(--gray-50);
+        }
+
+        .form-container {
+            max-width: 720px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 0.75rem;
+        }
+
+        .form-header p {
+            color: var(--gray-600);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            font-size: 0.875rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            background: var(--white);
+        }
+
+        input:focus, select:focus, textarea:focus {
             border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+
+        input:invalid:not(:placeholder-shown) {
+            border-color: var(--error);
+        }
+
+        .role-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-option {
+            position: relative;
+        }
+
+        .role-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .role-option label {
+            display: block;
+            padding: 1rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .role-option input[type="radio"]:checked + label {
+            border-color: var(--teal);
+            background: rgba(13, 148, 136, 0.05);
             color: var(--teal-dark);
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
+        .role-option input[type="radio"]:focus + label {
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+        }
+
+        .role-option label:hover {
+            border-color: var(--teal);
+            transform: translateY(-2px);
+        }
+
+        .form-footer {
+            text-align: center;
             margin-top: 2rem;
         }
 
-        .social-link {
-            width: 44px;
-            height: 44px;
-            background: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .social-link:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .social-link svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--indigo);
+        .privacy-note {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-top: 1rem;
         }
 
         /* Footer */
         footer {
             background: var(--gradient-primary);
             color: var(--white);
-            padding: 2rem 0;
-            margin-top: auto;
+            padding: 60px 0 40px;
         }
 
         .footer-content {
+            display: block;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        .footer-links {
-            display: flex;
-            gap: 2rem;
+        .footnotes {
+            background: var(--gray-100);
+            padding: 1.5rem 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--gray-600);
         }
 
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.2s ease;
+        /* Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 998;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: var(--white);
+        .sticky-cta.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Responsive */
+        .sticky-cta .btn {
+            box-shadow: var(--shadow-2xl);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .governance-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .metrics-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .metric:nth-child(2) {
+                border-right: none;
+            }
+
+            .roi-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            h1 {
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .hero-subhead {
+                font-size: 1.125rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+            }
+            
+            .hero-buttons .divider {
+                display: none;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-line {
+                display: none;
+            }
+            
+            .governance-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dev-features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .role-selector {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .metrics-bar {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .metric {
+                border-right: none;
+                border-bottom: 1px solid var(--gray-200);
+                padding: 1rem;
+            }
+            
+            .metric:last-child {
+                border-bottom: none;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+
+            .activity-ticker {
+                display: none;
+            }
+
+            .countdown-timer {
+                flex-wrap: wrap;
+            }
+
+            .roi-results {
+                grid-template-columns: 1fr;
+            }
+
+            .case-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+            .comparison-table table {
+                min-width: 600px;
+            }
+            
+            .comparison-table td:first-child,
+            .comparison-table th:first-child {
+                position: sticky;
+                left: 0;
+                z-index: 1;
+                background: var(--gray-50);
+            }
+            
+            .comparison-table th:first-child {
+                background: var(--indigo-dark);
+            }
+            
+            .section-title {
                 font-size: 2rem;
             }
-
-            .subtitle {
+            
+            .section-subtitle {
                 font-size: 1rem;
             }
-
-            .info-card {
-                padding: 1.5rem;
+            
+            .event-cta h2 {
+                font-size: 2rem;
             }
-
-            .info-card h2 {
-                font-size: 1.25rem;
+            
+            .event-cta p {
+                font-size: 1rem;
             }
-
-            .footer-content {
+            
+            .trust-logos {
+                justify-content: center;
+                gap: 1.5rem;
+            }
+            
+            .form-container {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.875rem;
+            }
+            
+            .hero-subhead {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .btn {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.875rem;
+            }
+            
+            .btn-enterprise {
+                padding: 0.875rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .case-tabs {
                 flex-direction: column;
-                gap: 1rem;
-                text-align: center;
             }
+            
+            .countdown-unit {
+                min-width: 45px;
+                padding: 0.5rem 0.75rem;
+            }
+            
+            .countdown-value {
+                font-size: 1.5rem;
+            }
+            
+            .roi-calculator {
+                padding: 2rem 1.5rem;
+            }
+            
+            .trust-logos img {
+                height: 30px;
+            }
+            
+            .sticky-cta {
+                bottom: 15px;
+                right: 15px;
+            }
+        }
 
-            .footer-links {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
+        /* Screen Reader Only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
         }
     </style>
 </head>
 <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- Skip Link -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
     <!-- Header -->
-    <header>
-        <div class="container">
-            <a href="index.html" class="logo" aria-label="MEL Home">
+    <header id="header">
+        <nav class="container" role="navigation" aria-label="Main navigation">
+            <a href="#" class="logo" aria-label="MEL Home">
                 <div class="logo-main">
                     <div class="logo-mark">M</div>
                     <span>MEL</span>
@@ -441,117 +1792,1099 @@
                     <img src="https://i.imgur.com/GyGXEPL.png" alt="JBecca" class="logo-company">
                 </div>
             </a>
-        </div>
+            <div class="nav-links">
+                <a href="#platform">Platform</a>
+                <a href="#results">Results</a>
+                <a href="#enterprise">Enterprise</a>
+                <a href="#demo-form" class="btn btn-primary">
+                    Book Executive Demo
+                </a>
+            </div>
+        </nav>
     </header>
 
     <!-- Main Content -->
-    <main>
-        <div class="thank-you-container">
-            <!-- Success Icon -->
-            <div class="success-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-            </div>
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="container">
+                <!-- Live Activity Ticker -->
+                <div class="activity-ticker" role="status" aria-live="polite">
+                    <div class="activity-text" id="activityText">
+                        A franchise in Texas just saved $4,200 this month
+                    </div>
+                </div>
 
-            <h1>Thank You!</h1>
-            <p class="subtitle">
-                We've received your request and our team is excited to connect with you.
-            </p>
-
-            <!-- What Happens Next -->
-            <div class="info-card">
-                <h2>What Happens Next?</h2>
-                <ul class="info-list">
-                    <li>
-                        <div class="check-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <div class="badge-dot"></div>
+                        FLDC 2025 EXCLUSIVE
+                    </div>
+                    
+                    <h1 id="hero-heading">
+                        Finally, Marketing That Works<br>
+                        <span class="highlight" data-text="While You Work">While You Work</span><br>
+                        <span style="font-size: 2.5rem; color: var(--success);">Save 70% • Launch in Minutes</span>
+                    </h1>
+                    
+                    <p class="hero-subhead">
+                        MEL's AI runs your franchise marketing 24/7, ensuring perfect brand compliance 
+                        while your teams focus on what they do best — running the business.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#demo-form" class="btn btn-enterprise">
+                            Book Executive Demo
+                        </a>
+                        <span class="divider">or</span>
+                        <a href="#calculator" class="btn btn-secondary">Calculate Your Savings →</a>
+                    </div>
+                    
+                    <!-- Animated Metrics Bar -->
+                    <div class="metrics-bar">
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                            </div>
+                            <span class="metric-value" data-target="847">0</span>
+                            <span class="metric-label">Active Franchises</span>
                         </div>
-                        <span>Our franchise success team will review your information</span>
-                    </li>
-                    <li>
-                        <div class="check-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="1" x2="12" y2="23"/>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                            </div>
+                            <span class="metric-value" data-target="70" data-suffix="%">0</span>
+                            <span class="metric-label">Cost Reduction</span>
                         </div>
-                        <span>You'll receive a calendar invite within 24 hours</span>
-                    </li>
-                    <li>
-                        <div class="check-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <span class="metric-value" data-target="3" data-suffix="min">0</span>
+                            <span class="metric-label">Launch Time</span>
                         </div>
-                        <span>We'll prepare a custom ROI analysis for your brand</span>
-                    </li>
-                    <li>
-                        <div class="check-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                </svg>
+                            </div>
+                            <span class="metric-value" data-target="27" data-suffix=":1">0</span>
+                            <span class="metric-label">Avg ROAS</span>
                         </div>
-                        <span>Get ready to see how MEL can transform your franchise marketing</span>
-                    </li>
-                </ul>
-
-                <div class="cta-section">
-                    <h3>Want to Learn More While You Wait?</h3>
-                    <p>Check out our case studies and see how other franchises are achieving incredible results with MEL.</p>
-                    <a href="index.html#results" class="btn btn-primary">View Case Studies</a>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Additional Links -->
-            <a href="index.html" class="btn btn-secondary">← Back to Home</a>
-
-            <!-- Social Links -->
-            <div class="social-links">
-                <a href="#" class="social-link" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                </a>
-                <a href="#" class="social-link" aria-label="Twitter">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                    </svg>
-                </a>
-                <a href="#" class="social-link" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                </a>
+        <!-- Trust Bar -->
+        <section class="trust-bar">
+            <div class="container">
+                <div class="trust-content">
+                    <div>
+                        <span class="trust-label">Trusted by Industry Leaders</span>
+                    </div>
+                    <div class="trust-logos">
+                        <img src="https://i.imgur.com/ZgbR5LE.png" alt="Partner Logo" loading="lazy">
+                        <img src="https://i.imgur.com/0qgsN6d.png" alt="Partner Logo" loading="lazy">
+                        <img src="https://i.imgur.com/cc945oD.png" alt="Partner Logo" loading="lazy">
+                        <img src="https://i.imgur.com/0rvLYxl.jpeg" alt="Partner Logo" loading="lazy">
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Governance Section -->
+        <section class="section" id="platform" aria-labelledby="governance-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-eyebrow">ENTERPRISE GOVERNANCE</div>
+                    <h2 class="section-title" id="governance-heading">Total Control. Zero Complexity.</h2>
+                    <p class="section-subtitle">Built-in guardrails ensure every campaign maintains brand standards while giving franchisees the flexibility they need to succeed locally.</p>
+                </div>
+                
+                <div class="governance-grid">
+                    <div class="governance-card">
+                        <div class="governance-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M9 9h6v6H9z"/>
+                            </svg>
+                        </div>
+                        <h3>Locked Templates</h3>
+                        <p>Brand-approved creative that franchisees can personalize within defined parameters</p>
+                    </div>
+                    
+                    <div class="governance-card">
+                        <div class="governance-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 2v10l7 7"/>
+                            </svg>
+                        </div>
+                        <h3>Spend Controls</h3>
+                        <p>Pre-set budget limits and automatic optimization within approved thresholds</p>
+                    </div>
+                    
+                    <div class="governance-card">
+                        <div class="governance-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true">
+                                <path d="M9 11l3 3L22 4"/>
+                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                            </svg>
+                        </div>
+                        <h3>Approval Workflows</h3>
+                        <p>Configurable approval chains with complete audit logs for compliance</p>
+                    </div>
+                    
+                    <div class="governance-card">
+                        <div class="governance-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
+                            </svg>
+                        </div>
+                        <h3>Local Flexibility</h3>
+                        <p>Perfect balance of corporate control with local market customization</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI Calculator -->
+        <section class="section section-alt" id="calculator" aria-labelledby="calculator-heading">
+            <div class="container-narrow">
+                <div class="section-header">
+                    <div class="section-eyebrow">CALCULATE YOUR SAVINGS</div>
+                    <h2 class="section-title" id="calculator-heading">See Your ROI in Real-Time</h2>
+                </div>
+                
+                <div class="roi-calculator">
+                    <h3 class="roi-title">Adjust Your Parameters</h3>
+                    <div class="roi-inputs">
+                        <div class="roi-input-group">
+                            <label for="roiLocations">Number of Locations</label>
+                            <input type="range" id="roiLocations" class="roi-slider" min="1" max="500" value="50">
+                            <span class="roi-value" id="roiLocationsValue">50</span>
+                        </div>
+                        <div class="roi-input-group">
+                            <label for="roiAgencyCost">Current Agency Cost/Month</label>
+                            <input type="range" id="roiAgencyCost" class="roi-slider" min="1000" max="50000" value="10000" step="1000">
+                            <span class="roi-value">$<span id="roiAgencyCostValue">10,000</span></span>
+                        </div>
+                        <div class="roi-input-group">
+                            <label for="roiAdSpend">Monthly Ad Spend</label>
+                            <input type="range" id="roiAdSpend" class="roi-slider" min="1000" max="100000" value="20000" step="1000">
+                            <span class="roi-value">$<span id="roiAdSpendValue">20,000</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="roi-results">
+                        <div class="roi-result">
+                            <span class="roi-result-value" id="roiMonthlySavings">$9,050</span>
+                            <span class="roi-result-label">Monthly Savings</span>
+                        </div>
+                        <div class="roi-result">
+                            <span class="roi-result-value" id="roiAnnualSavings">$108,600</span>
+                            <span class="roi-result-label">Annual Savings</span>
+                        </div>
+                        <div class="roi-result">
+                            <span class="roi-result-value" id="roiPayback">< 1 month</span>
+                            <span class="roi-result-label">Payback Period</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="section" aria-labelledby="process-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-eyebrow">HOW IT WORKS</div>
+                    <h2 class="section-title" id="process-heading">From Setup to Success in Minutes</h2>
+                </div>
+                
+                <div class="process-container">
+                    <div class="process-line"></div>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-circle">1</div>
+                            <h3 class="step-title">Upload Campaign</h3>
+                            <p class="step-description">Drop your CSV with parameters, creative, and guardrails into MEL</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-circle">2</div>
+                            <h3 class="step-title">One-Click Launch</h3>
+                            <p class="step-description">Franchisees press go — no marketing degree required</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-circle">3</div>
+                            <h3 class="step-title">AI Optimizes</h3>
+                            <p class="step-description">Continuous performance improvement with smart budget reallocation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section class="section section-alt" aria-labelledby="comparison-heading" style="overflow: visible;">
+            <div class="container-narrow" style="overflow: visible;">
+                <div class="section-header">
+                    <div class="section-eyebrow">COMPETITIVE ADVANTAGE</div>
+                    <h2 class="section-title" id="comparison-heading">Why Leaders Choose MEL</h2>
+                    <p class="section-subtitle">See how MEL outperforms traditional agencies and DIY platforms</p>
+                </div>
+                
+                <div class="comparison-wrapper">
+                    <div class="comparison-table">
+                        <table role="table">
+                            <caption class="sr-only">Comparison of marketing platforms and approaches</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="min-width: 180px;">Capability</th>
+                                    <th scope="col">Traditional Agency</th>
+                                    <th scope="col">DIY Platforms</th>
+                                    <th scope="col" class="featured">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                                            <polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"/>
+                                        </svg>
+                                        MEL Platform
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Monthly Cost</strong></td>
+                                    <td>$5,000-15,000</td>
+                                    <td>$500-2,000 + time</td>
+                                    <td class="featured"><strong>$99/mo</strong> + media</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Time to Launch</strong></td>
+                                    <td>2-4 weeks</td>
+                                    <td>Days to weeks</td>
+                                    <td class="featured"><strong>Under 3 minutes</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Brand Compliance</strong></td>
+                                    <td>Manual review</td>
+                                    <td><span class="cross">✗</span> No guardrails</td>
+                                    <td class="featured"><span class="check">✓</span> <strong>Automated</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Optimization</strong></td>
+                                    <td>Weekly at best</td>
+                                    <td>Manual only</td>
+                                    <td class="featured"><span class="check">✓</span> <strong>Real-time AI</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Transparency</strong></td>
+                                    <td><span class="cross">✗</span> Black box</td>
+                                    <td>Full visibility</td>
+                                    <td class="featured"><span class="check">✓</span> <strong>Complete insights</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Scalability</strong></td>
+                                    <td>Limited locations</td>
+                                    <td>Time-intensive</td>
+                                    <td class="featured"><span class="check">✓</span> <strong>Unlimited</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Studies -->
+        <section class="section" id="results" aria-labelledby="cases-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-eyebrow">PROVEN RESULTS</div>
+                    <h2 class="section-title" id="cases-heading">Enterprise Success Stories</h2>
+                </div>
+                
+                <div class="case-tabs" role="tablist">
+                    <button class="case-tab active" role="tab" aria-selected="true" data-case="express">Express Employment</button>
+                    <button class="case-tab" role="tab" aria-selected="false" data-case="ziebart">Ziebart</button>
+                </div>
+                
+                <div class="case-content-wrapper">
+                    <div class="case-panel active" id="case-express" role="tabpanel">
+                        <div class="case-card">
+                            <div class="case-header">
+                                <div class="case-logo">Express Employment</div>
+                                <div class="case-industry">Staffing & Recruitment</div>
+                            </div>
+                            <div class="case-content">
+                                <p class="case-narrative">
+                                    Express Employment transformed their franchise marketing with MEL's AI-driven optimization. 
+                                    The platform analyzed millions of data points to identify high-converting audiences and 
+                                    automatically reallocated budget to top performers, achieving dramatic cost improvements 
+                                    while maintaining complete brand consistency.
+                                </p>
+                                <div class="case-metrics">
+                                    <div class="case-metric">
+                                        <span class="case-metric-value">30%</span>
+                                        <span class="case-metric-label">Lower CPL*</span>
+                                    </div>
+                                    <div class="case-metric">
+                                        <span class="case-metric-value">100%</span>
+                                        <span class="case-metric-label">Compliance</span>
+                                    </div>
+                                    <div class="case-metric">
+                                        <span class="case-metric-value">75%</span>
+                                        <span class="case-metric-label">Time Saved</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="case-panel" id="case-ziebart" role="tabpanel">
+                        <div class="case-card">
+                            <div class="case-header">
+                                <div class="case-logo">Ziebart</div>
+                                <div class="case-industry">Automotive Services</div>
+                            </div>
+                            <div class="case-content">
+                                <p class="case-narrative">
+                                    Ziebart revolutionized their marketing operations with MEL's intelligent automation. 
+                                    By leveraging intent-based audiences and real-time optimization, they delivered 
+                                    exceptional returns on national campaigns while individual franchisee pilots 
+                                    demonstrated immediate value with minimal effort.
+                                </p>
+                                <div class="case-metrics">
+                                    <div class="case-metric">
+                                        <span class="case-metric-value">27:1</span>
+                                        <span class="case-metric-label">ROAS*</span>
+                                    </div>
+                                    <div class="case-metric">
+                                        <span class="case-metric-value">$8M</span>
+                                        <span class="case-metric-label">Revenue*</span>
+                                    </div>
+                                    <div class="case-metric">
+                                        <span class="case-metric-value">90%</span>
+                                        <span class="case-metric-label">Risk Reduction</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Section -->
+        <section class="section section-dark" id="enterprise" aria-labelledby="dev-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-eyebrow" style="color: var(--mint);">FRANCHISE DEVELOPMENT</div>
+                    <h2 class="section-title" id="dev-heading">Purpose-Built for Scale</h2>
+                    <p class="section-subtitle">Accelerate franchise development with intent-powered recruitment tools that deliver qualified leads at unprecedented efficiency.</p>
+                </div>
+                
+                <div class="dev-features-grid">
+                    <div class="dev-feature">
+                        <div class="dev-feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true">
+                                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                                <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+                            </svg>
+                        </div>
+                        <div class="dev-feature-content">
+                            <h4>Brand-Approved Creative</h4>
+                            <p>Professional templates that convert prospects into qualified franchise leads</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dev-feature">
+                        <div class="dev-feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="dev-feature-content">
+                            <h4>Intent Audiences</h4>
+                            <p>Precision targeting across Meta, Display, and CTV for maximum reach</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dev-feature">
+                        <div class="dev-feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="dev-feature-content">
+                            <h4>2 Hours Per Month</h4>
+                            <p>Manage your entire recruitment funnel with minimal time investment</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dev-feature">
+                        <div class="dev-feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true">
+                                <path d="M13 2L3 14l9-2 2 9 10-12-9 2-2-9z"/>
+                            </svg>
+                        </div>
+                        <div class="dev-feature-content">
+                            <h4>Instant Updates</h4>
+                            <p>Make campaign changes in real-time with built-in team training</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; margin-top: 3rem; font-style: italic; opacity: 0.9;">
+                    Development teams report 3x faster campaign launches with full brand compliance
+                </p>
+            </div>
+        </section>
+
+        <!-- Event CTA -->
+        <section class="event-cta" aria-labelledby="event-heading">
+            <div class="container">
+                <div class="event-content">
+                    <span class="event-badge">FLDC EXCLUSIVE OFFER</span>
+                    <h2 id="event-heading">Concierge Onboarding Program</h2>
+                    <p>Get white-glove setup with priority brand configuration, pilot seats for your top performers, and dedicated integration support from our franchise success team.</p>
+                    
+                    <!-- Countdown Timer -->
+                    <div class="countdown-wrapper" role="timer" aria-label="Offer countdown">
+                        <div class="countdown-label">Offer Expires In:</div>
+                        <div class="countdown-timer">
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="days">02</span>
+                                <span class="countdown-label-small">DAYS</span>
+                            </div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="hours">14</span>
+                                <span class="countdown-label-small">HOURS</span>
+                            </div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="minutes">37</span>
+                                <span class="countdown-label-small">MINUTES</span>
+                            </div>
+                            <div class="countdown-unit">
+                                <span class="countdown-value" id="seconds">42</span>
+                                <span class="countdown-label-small">SECONDS</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#demo-form" class="btn btn-enterprise" style="background: white; color: var(--teal-dark);">Reserve Your Spot</a>
+                    <div class="event-limit">Only <span class="spots-remaining">7</span> Spots Remaining</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lead Form -->
+        <section class="form-section" id="demo-form" aria-labelledby="form-heading">
+            <div class="container">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2 id="form-heading">Transform Your Franchise Marketing</h2>
+                        <p>Schedule your executive demo and discover how MEL can reduce costs while scaling growth.</p>
+                    </div>
+                    
+                    <form id="leadForm" aria-label="Demo booking form">
+                        <div aria-live="polite" aria-atomic="true" id="form-status" class="sr-only"></div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required aria-required="true">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required aria-required="true">
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="email">Business Email *</label>
+                                <input type="email" id="email" name="email" required aria-required="true" placeholder="you@company.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">Company *</label>
+                                <input type="text" id="company" name="company" required aria-required="true">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" id="title" name="title">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <fieldset>
+                                <legend>I am a... *</legend>
+                                <div class="role-selector">
+                                    <div class="role-option">
+                                        <input type="radio" id="franchisor" name="role" value="franchisor" required aria-required="true">
+                                        <label for="franchisor">Franchisor Executive</label>
+                                    </div>
+                                    <div class="role-option">
+                                        <input type="radio" id="franchisee" name="role" value="franchisee" required>
+                                        <label for="franchisee">Franchisee/Business Owner</label>
+                                    </div>
+                                    <div class="role-option">
+                                        <input type="radio" id="development" name="role" value="development" required>
+                                        <label for="development">Executive Team Member</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="locations">Number of Locations</label>
+                            <input type="number" id="locations" name="locations" min="1" placeholder="Optional">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message (Optional)</label>
+                            <textarea id="message" name="message" rows="3" placeholder="Tell us about your marketing challenges..."></textarea>
+                        </div>
+                        
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-enterprise" style="width: 100%;">
+                                Book Executive Demo
+                            </button>
+                            <p class="privacy-note">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 4px;" aria-hidden="true">
+                                    <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                    <path d="M7 11V7a5 5 0 0110 0v4"/>
+                                </svg>
+                                Your information is secure and will never be shared. We respect your inbox.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>MEL</h3>
+                    <p>The enterprise franchise marketing platform that delivers measurable results while ensuring complete brand compliance.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
                 <div>&copy; 2025 MEL. All rights reserved.</div>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Contact</a>
+                <div>
+                    <a href="#" style="color: inherit; margin-right: 1rem;">Privacy Policy</a>
+                    <a href="#" style="color: inherit; margin-right: 1rem;">Terms of Service</a>
+                    <a href="#" style="color: inherit;">Cookie Policy</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Footnotes -->
+    <div class="footnotes">
+        <div class="container">
+            * Case-specific results. Performance may vary based on implementation and market conditions.
+        </div>
+    </div>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta" id="stickyCTA">
+        <a href="#demo-form" class="btn btn-primary">Book Demo</a>
+    </div>
+
+    <!-- Urgency Banner -->
+    <div class="urgency-banner" id="urgencyBanner" role="alert">
+        ⚡ Limited Time: Only 7 spots remaining for FLDC Concierge Onboarding
+    </div>
+
+    <!-- Scripts -->
     <script>
-        // Optional: Track page view
-        console.log('Thank you page loaded');
-        
-        // Optional: Add any analytics tracking here
-        if (window.gtag) {
-            gtag('event', 'conversion', {
-                'send_to': 'YOUR_CONVERSION_ID'
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = scrolled + '%';
+            progressBar.setAttribute('aria-valuenow', Math.round(scrolled));
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Sticky CTA visibility
+            const stickyCTA = document.getElementById('stickyCTA');
+            if (window.scrollY > 600) {
+                stickyCTA.classList.add('visible');
+            } else {
+                stickyCTA.classList.remove('visible');
+            }
+
+            // Urgency banner
+            const urgencyBanner = document.getElementById('urgencyBanner');
+            if (window.scrollY > 1500 && window.scrollY < 3000) {
+                urgencyBanner.classList.add('show');
+            } else {
+                urgencyBanner.classList.remove('show');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             });
+        });
+
+        // Animated counters
+        const animateCounters = () => {
+            const counters = document.querySelectorAll('.metric-value');
+            
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const suffix = counter.getAttribute('data-suffix') || '';
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current) + suffix;
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target + suffix;
+                    }
+                };
+                
+                updateCounter();
+            });
+        };
+
+        // Live Activity Feed
+        const activities = [
+            "A franchise in Texas just saved $4,200 this month",
+            "New location in California launched campaign in 2.3 minutes",
+            "Florida network achieved 312% ROAS this week",
+            "Multi-unit owner reduced costs by 68%",
+            "Brand compliance rate hit 100% across 47 locations",
+            "Arizona franchisee generated 147 leads yesterday",
+            "Midwest region seeing 42% higher conversion rates"
+        ];
+
+        let activityIndex = 0;
+        setInterval(() => {
+            const activityText = document.getElementById('activityText');
+            if (activityText) {
+                activityIndex = (activityIndex + 1) % activities.length;
+                activityText.style.opacity = '0';
+                setTimeout(() => {
+                    activityText.textContent = activities[activityIndex];
+                    activityText.style.opacity = '1';
+                }, 300);
+            }
+        }, 4000);
+
+        // ROI Calculator
+        function calculateROI() {
+            const locations = parseInt(document.getElementById('roiLocations').value);
+            const agencyCost = parseInt(document.getElementById('roiAgencyCost').value);
+            const adSpend = parseInt(document.getElementById('roiAdSpend').value);
+            
+            document.getElementById('roiLocationsValue').textContent = locations;
+            document.getElementById('roiAgencyCostValue').textContent = agencyCost.toLocaleString();
+            document.getElementById('roiAdSpendValue').textContent = adSpend.toLocaleString();
+            
+            const melCost = locations * 99;
+            const monthlySavings = Math.max(0, agencyCost - melCost);
+            const annualSavings = monthlySavings * 12;
+            const improvedROI = adSpend * 0.31;
+            const totalSavings = annualSavings + (improvedROI * 12);
+            
+            document.getElementById('roiMonthlySavings').textContent = '
+
+        document.getElementById('roiLocations')?.addEventListener('input', calculateROI);
+        document.getElementById('roiAgencyCost')?.addEventListener('input', calculateROI);
+        document.getElementById('roiAdSpend')?.addEventListener('input', calculateROI);
+
+        if (document.getElementById('roiLocations')) {
+            calculateROI();
         }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 2);
+            endDate.setHours(23, 59, 59);
+            
+            const now = new Date();
+            const diff = endDate - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            if (document.getElementById('days')) document.getElementById('days').textContent = String(days).padStart(2, '0');
+            if (document.getElementById('hours')) document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            if (document.getElementById('minutes')) document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            if (document.getElementById('seconds')) document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Case Study Tabs
+        document.querySelectorAll('.case-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.case-tab').forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                
+                document.querySelectorAll('.case-panel').forEach(panel => {
+                    panel.classList.remove('active');
+                });
+                const caseId = this.getAttribute('data-case');
+                document.getElementById('case-' + caseId).classList.add('active');
+            });
+        });
+
+        // Form submission
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const required = ['firstName', 'lastName', 'email', 'company'];
+            
+            required.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value) {
+                    isValid = false;
+                }
+            });
+            
+            if (!document.querySelector('input[name="role"]:checked')) {
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    company: document.getElementById('company').value,
+                    title: document.getElementById('title').value,
+                    role: document.querySelector('input[name="role"]:checked').value,
+                    locations: document.getElementById('locations').value,
+                    message: document.getElementById('message').value,
+                    timestamp: new Date().toISOString(),
+                    source: 'FLDC Landing Page'
+                };
+                
+                console.log('Form submission:', formData);
+                
+                // In production, send data to your CRM/backend here
+                // Example: fetch('/api/submit-form', { method: 'POST', body: JSON.stringify(formData) })
+                
+                // Redirect to thank you page
+                window.location.href = 'thank-you.html';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    if (entry.target.classList.contains('metrics-bar')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.governance-card, .process-step, .dev-feature, .metrics-bar').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> + Math.max(0, monthlySavings).toLocaleString();
+            document.getElementById('roiAnnualSavings').textContent = '
+
+        document.getElementById('roiLocations')?.addEventListener('input', calculateROI);
+        document.getElementById('roiAgencyCost')?.addEventListener('input', calculateROI);
+        document.getElementById('roiAdSpend')?.addEventListener('input', calculateROI);
+
+        if (document.getElementById('roiLocations')) {
+            calculateROI();
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 2);
+            endDate.setHours(23, 59, 59);
+            
+            const now = new Date();
+            const diff = endDate - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            if (document.getElementById('days')) document.getElementById('days').textContent = String(days).padStart(2, '0');
+            if (document.getElementById('hours')) document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            if (document.getElementById('minutes')) document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            if (document.getElementById('seconds')) document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Case Study Tabs
+        document.querySelectorAll('.case-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.case-tab').forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                
+                document.querySelectorAll('.case-panel').forEach(panel => {
+                    panel.classList.remove('active');
+                });
+                const caseId = this.getAttribute('data-case');
+                document.getElementById('case-' + caseId).classList.add('active');
+            });
+        });
+
+        // Form submission
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const required = ['firstName', 'lastName', 'email', 'company'];
+            
+            required.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value) {
+                    isValid = false;
+                }
+            });
+            
+            if (!document.querySelector('input[name="role"]:checked')) {
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    company: document.getElementById('company').value,
+                    title: document.getElementById('title').value,
+                    role: document.querySelector('input[name="role"]:checked').value,
+                    locations: document.getElementById('locations').value,
+                    message: document.getElementById('message').value,
+                    timestamp: new Date().toISOString(),
+                    source: 'FLDC Landing Page'
+                };
+                
+                console.log('Form submission:', formData);
+                
+                // In production, send data to your CRM/backend here
+                // Example: fetch('/api/submit-form', { method: 'POST', body: JSON.stringify(formData) })
+                
+                // Redirect to thank you page
+                window.location.href = 'thank-you.html';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    if (entry.target.classList.contains('metrics-bar')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.governance-card, .process-step, .dev-feature, .metrics-bar').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> + Math.max(0, Math.round(totalSavings)).toLocaleString();
+            document.getElementById('roiPayback').textContent = monthlySavings > melCost ? '< 1 month' : monthlySavings > 0 ? '1-2 months' : 'Contact us';
+        }
+
+        document.getElementById('roiLocations')?.addEventListener('input', calculateROI);
+        document.getElementById('roiAgencyCost')?.addEventListener('input', calculateROI);
+        document.getElementById('roiAdSpend')?.addEventListener('input', calculateROI);
+
+        if (document.getElementById('roiLocations')) {
+            calculateROI();
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 2);
+            endDate.setHours(23, 59, 59);
+            
+            const now = new Date();
+            const diff = endDate - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            if (document.getElementById('days')) document.getElementById('days').textContent = String(days).padStart(2, '0');
+            if (document.getElementById('hours')) document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            if (document.getElementById('minutes')) document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            if (document.getElementById('seconds')) document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Case Study Tabs
+        document.querySelectorAll('.case-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.case-tab').forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                
+                document.querySelectorAll('.case-panel').forEach(panel => {
+                    panel.classList.remove('active');
+                });
+                const caseId = this.getAttribute('data-case');
+                document.getElementById('case-' + caseId).classList.add('active');
+            });
+        });
+
+        // Form submission
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const required = ['firstName', 'lastName', 'email', 'company'];
+            
+            required.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value) {
+                    isValid = false;
+                }
+            });
+            
+            if (!document.querySelector('input[name="role"]:checked')) {
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    company: document.getElementById('company').value,
+                    title: document.getElementById('title').value,
+                    role: document.querySelector('input[name="role"]:checked').value,
+                    locations: document.getElementById('locations').value,
+                    message: document.getElementById('message').value,
+                    timestamp: new Date().toISOString(),
+                    source: 'FLDC Landing Page'
+                };
+                
+                console.log('Form submission:', formData);
+                
+                // In production, send data to your CRM/backend here
+                // Example: fetch('/api/submit-form', { method: 'POST', body: JSON.stringify(formData) })
+                
+                // Redirect to thank you page
+                window.location.href = 'thank-you.html';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    if (entry.target.classList.contains('metrics-bar')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.governance-card, .process-step, .dev-feature, .metrics-bar').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
