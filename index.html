@@ -192,7 +192,6 @@
             display: flex;
             align-items: center;
             gap: 0.35rem;
-            padding-left: 2px;
         }
         
         .logo-by {
@@ -2495,6 +2494,11 @@
                 updateCounter();
             });
         };
+        
+        // Trigger counter animation on page load
+        window.addEventListener('load', () => {
+            setTimeout(animateCounters, 500);
+        });
 
         // Live Activity Feed
         const activities = [
