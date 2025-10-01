@@ -160,7 +160,14 @@
             text-decoration: none;
             letter-spacing: -0.025em;
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-top {
+            display: flex;
+            align-items: center;
             gap: 0.75rem;
         }
 
@@ -182,13 +189,6 @@
             transform: rotate(-5deg) scale(1.1);
         }
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            align-items: center;
-        }
-
         .logo-main {
             font-size: 1.875rem;
             font-weight: 800;
@@ -205,7 +205,7 @@
         }
 
         .logo-by img {
-            height: 22px;
+            height: 28px;
             width: auto;
         }
 
@@ -1775,14 +1775,14 @@
     <header id="header">
         <nav class="container" role="navigation" aria-label="Main navigation">
             <a href="#" class="logo" aria-label="MEL Home">
-                <div class="logo-mark">M</div>
-                <div class="logo-text">
+                <div class="logo-top">
+                    <div class="logo-mark">M</div>
                     <span class="logo-main">MEL</span>
-                    <span class="logo-by">
-                        by
-                        <img src="https://i.imgur.com/GyGXEPL.png" alt="JBecca">
-                    </span>
                 </div>
+                <span class="logo-by">
+                    by
+                    <img src="https://i.imgur.com/GyGXEPL.png" alt="JBecca">
+                </span>
             </a>
             <div class="nav-links">
                 <a href="#platform">Platform</a>
