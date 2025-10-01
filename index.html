@@ -1840,7 +1840,7 @@
                     </div>
                     <div class="trust-logos">
                         <img src="https://i.imgur.com/oPQXJGG.png" alt="Express Pros" loading="lazy">
-                        <img src="https://i.imgur.com/0rvLYxl.jpeg" alt="Partner Logo" loading="lazy">
+                        <img src="https://i.imgur.com/4YPXcdV.png" alt="Partner Logo" loading="lazy">
                         <img src="https://i.imgur.com/cc945oD.png" alt="Partner Logo" loading="lazy">
                         <img src="https://i.imgur.com/ZgbR5LE.png" alt="Partner Logo" loading="lazy">
                     </div>
@@ -2247,7 +2247,12 @@
                         <p>Schedule your executive demo and discover how MEL can reduce costs while scaling growth.</p>
                     </div>
                     
-                    <form id="leadForm" aria-label="Demo booking form">
+                    <form id="leadForm" name="demo-request" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field" aria-label="Demo booking form">
+                        <!-- Honeypot field for spam protection -->
+                        <p style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+                        
                         <div aria-live="polite" aria-atomic="true" id="form-status" class="sr-only"></div>
                         
                         <div class="form-grid">
@@ -2496,9 +2501,8 @@
 
         // Countdown Timer
         function updateCountdown() {
-            const endDate = new Date();
-            endDate.setDate(endDate.getDate() + 2);
-            endDate.setHours(23, 59, 59);
+            // October 9th, 2025 at 10:30 AM EST
+            const endDate = new Date('2025-10-09T10:30:00-04:00');
             
             const now = new Date();
             const diff = endDate - now;
@@ -2535,10 +2539,9 @@
             });
         });
 
-        // Form submission
+        // Form submission - Updated for Netlify Forms
         document.getElementById('leadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
+            // Basic validation
             let isValid = true;
             const required = ['firstName', 'lastName', 'email', 'company'];
             
@@ -2553,28 +2556,14 @@
                 isValid = false;
             }
             
-            if (isValid) {
-                const formData = {
-                    firstName: document.getElementById('firstName').value,
-                    lastName: document.getElementById('lastName').value,
-                    email: document.getElementById('email').value,
-                    company: document.getElementById('company').value,
-                    title: document.getElementById('title').value,
-                    role: document.querySelector('input[name="role"]:checked').value,
-                    locations: document.getElementById('locations').value,
-                    message: document.getElementById('message').value,
-                    timestamp: new Date().toISOString(),
-                    source: 'FLDC Landing Page'
-                };
-                
-                console.log('Form submission:', formData);
-                
-                // In production, send data to your CRM/backend here
-                // Example: fetch('/api/submit-form', { method: 'POST', body: JSON.stringify(formData) })
-                
-                // Redirect to thank you page
-                window.location.href = 'thank-you.html';
+            if (!isValid) {
+                e.preventDefault();
+                alert('Please fill in all required fields.');
+                return false;
             }
+            
+            // Let Netlify handle the form submission naturally
+            // Form will submit to Netlify and you'll receive email notifications
         });
 
         // Intersection Observer for animations
