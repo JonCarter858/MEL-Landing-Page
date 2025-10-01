@@ -42,6 +42,7 @@
             --success-light: #10b981;
             --warning: #f59e0b;
             --error: #dc2626;
+            --red: #FF5757;
             --gradient-primary: linear-gradient(135deg, #1e1b4b 0%, #312e5e 100%);
             --gradient-accent: linear-gradient(135deg, #0d9488 0%, #047857 100%);
             --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
@@ -176,6 +177,26 @@
 
         .logo:hover .logo-mark {
             transform: rotate(-5deg) scale(1.1);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.125rem;
+        }
+        
+        .logo-by {
+            font-size: 0.5rem;
+            font-weight: 400;
+            color: var(--gray-500);
+            text-transform: lowercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .logo-company {
+            height: 14px;
+            width: auto;
+            opacity: 0.8;
         }
 
         .nav-links {
@@ -338,7 +359,8 @@
             box-shadow: var(--shadow-sm);
             font-size: 0.875rem;
             font-weight: 600;
-            color: var(--teal-dark);
+            color: var(--white);
+            background: var(--red);
             animation: slideDown 0.6s ease-out;
         }
 
@@ -356,7 +378,7 @@
         .hero-badge .badge-dot {
             width: 8px;
             height: 8px;
-            background: var(--success);
+            background: var(--white);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
@@ -523,17 +545,17 @@
         /* Trust Bar */
         .trust-bar {
             background: var(--white);
-            padding: 2rem 0;
+            padding: 3rem 0;
             border-top: 1px solid var(--gray-100);
             border-bottom: 1px solid var(--gray-100);
         }
 
         .trust-content {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 3rem;
+            justify-content: center;
+            gap: 2rem;
         }
 
         .trust-label {
@@ -542,19 +564,21 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            text-align: center;
         }
 
         .trust-logos {
             display: flex;
             align-items: center;
-            gap: 3rem;
+            justify-content: center;
+            gap: 4rem;
             flex-wrap: wrap;
         }
         
         .trust-logos img {
-            height: 40px;
+            height: 60px;
             width: auto;
-            max-width: 120px;
+            max-width: 180px;
             object-fit: contain;
             transition: all 0.3s ease;
         }
@@ -926,7 +950,6 @@
             font-size: 0.625rem;
             font-weight: 700;
             letter-spacing: 0.05em;
-            animation: pulse 2s infinite;
             z-index: 10;
             white-space: nowrap;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -1158,7 +1181,7 @@
 
         /* Urgency Banner */
         .urgency-banner {
-            background: var(--warning);
+            background: var(--red);
             color: var(--white);
             padding: 0.75rem;
             text-align: center;
@@ -1259,8 +1282,8 @@
 
         .event-badge {
             display: inline-block;
-            background: var(--white);
-            color: var(--teal-dark);
+            background: var(--red);
+            color: var(--white);
             padding: 0.5rem 1.5rem;
             border-radius: 100px;
             font-weight: 700;
@@ -1304,7 +1327,7 @@
         .spots-remaining {
             font-size: 2rem;
             font-weight: 800;
-            color: var(--white);
+            color: var(--red);
             margin: 0 0.5rem;
         }
 
@@ -1751,7 +1774,13 @@
         <nav class="container" role="navigation" aria-label="Main navigation">
             <a href="#" class="logo" aria-label="MEL Home">
                 <div class="logo-mark">M</div>
-                MEL
+                <div class="logo-text">
+                    <span>MEL</span>
+                    <div style="display: flex; align-items: center; gap: 0.25rem;">
+                        <span class="logo-by">by</span>
+                        <img src="https://i.imgur.com/GyGXEPL.png" alt="JBecca" class="logo-company">
+                    </div>
+                </div>
             </a>
             <div class="nav-links">
                 <a href="#platform">Platform</a>
@@ -1785,7 +1814,7 @@
                     <h1 id="hero-heading">
                         Finally, Marketing That Works<br>
                         <span class="highlight" data-text="While You Work">While You Work</span><br>
-                        <span style="font-size: 2.5rem; color: var(--success);">Save 70% • Launch in 3 Minutes</span>
+                        <span style="font-size: 2.5rem; color: var(--success);">Save 70% • Launch in Minutes</span>
                     </h1>
                     
                     <p class="hero-subhead">
@@ -1796,7 +1825,6 @@
                     <div class="hero-buttons">
                         <a href="#demo-form" class="btn btn-enterprise">
                             Book Executive Demo
-                            <span class="btn-micro">2-minute scheduling • Instant confirmation</span>
                         </a>
                         <span class="divider">or</span>
                         <a href="#calculator" class="btn btn-secondary">Calculate Your Savings →</a>
@@ -2304,11 +2332,11 @@
                                     </div>
                                     <div class="role-option">
                                         <input type="radio" id="franchisee" name="role" value="franchisee" required>
-                                        <label for="franchisee">Franchisee Owner</label>
+                                        <label for="franchisee">Franchisee/Business Owner</label>
                                     </div>
                                     <div class="role-option">
                                         <input type="radio" id="development" name="role" value="development" required>
-                                        <label for="development">Development Team</label>
+                                        <label for="development">Executive Team Member</label>
                                     </div>
                                 </div>
                             </fieldset>
@@ -2493,14 +2521,246 @@
             document.getElementById('roiAdSpendValue').textContent = adSpend.toLocaleString();
             
             const melCost = locations * 99;
-            const monthlySavings = agencyCost - melCost;
+            const monthlySavings = Math.max(0, agencyCost - melCost);
             const annualSavings = monthlySavings * 12;
             const improvedROI = adSpend * 0.31;
             const totalSavings = annualSavings + (improvedROI * 12);
             
-            document.getElementById('roiMonthlySavings').textContent = '$' + monthlySavings.toLocaleString();
-            document.getElementById('roiAnnualSavings').textContent = '$' + totalSavings.toLocaleString();
-            document.getElementById('roiPayback').textContent = monthlySavings > melCost ? '< 1 month' : '1-2 months';
+            document.getElementById('roiMonthlySavings').textContent = '
+
+        document.getElementById('roiLocations')?.addEventListener('input', calculateROI);
+        document.getElementById('roiAgencyCost')?.addEventListener('input', calculateROI);
+        document.getElementById('roiAdSpend')?.addEventListener('input', calculateROI);
+
+        if (document.getElementById('roiLocations')) {
+            calculateROI();
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 2);
+            endDate.setHours(23, 59, 59);
+            
+            const now = new Date();
+            const diff = endDate - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            if (document.getElementById('days')) document.getElementById('days').textContent = String(days).padStart(2, '0');
+            if (document.getElementById('hours')) document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            if (document.getElementById('minutes')) document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            if (document.getElementById('seconds')) document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Case Study Tabs
+        document.querySelectorAll('.case-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.case-tab').forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                
+                document.querySelectorAll('.case-panel').forEach(panel => {
+                    panel.classList.remove('active');
+                });
+                const caseId = this.getAttribute('data-case');
+                document.getElementById('case-' + caseId).classList.add('active');
+            });
+        });
+
+        // Form submission
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const required = ['firstName', 'lastName', 'email', 'company'];
+            
+            required.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value) {
+                    isValid = false;
+                }
+            });
+            
+            if (!document.querySelector('input[name="role"]:checked')) {
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    company: document.getElementById('company').value,
+                    title: document.getElementById('title').value,
+                    role: document.querySelector('input[name="role"]:checked').value,
+                    locations: document.getElementById('locations').value,
+                    message: document.getElementById('message').value,
+                    timestamp: new Date().toISOString(),
+                    source: 'FLDC Landing Page'
+                };
+                
+                console.log('Form submission:', formData);
+                
+                // In production, send data to your CRM/backend here
+                // Example: fetch('/api/submit-form', { method: 'POST', body: JSON.stringify(formData) })
+                
+                // Redirect to thank you page
+                window.location.href = 'thank-you.html';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    if (entry.target.classList.contains('metrics-bar')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.governance-card, .process-step, .dev-feature, .metrics-bar').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> + Math.max(0, monthlySavings).toLocaleString();
+            document.getElementById('roiAnnualSavings').textContent = '
+
+        document.getElementById('roiLocations')?.addEventListener('input', calculateROI);
+        document.getElementById('roiAgencyCost')?.addEventListener('input', calculateROI);
+        document.getElementById('roiAdSpend')?.addEventListener('input', calculateROI);
+
+        if (document.getElementById('roiLocations')) {
+            calculateROI();
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 2);
+            endDate.setHours(23, 59, 59);
+            
+            const now = new Date();
+            const diff = endDate - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            if (document.getElementById('days')) document.getElementById('days').textContent = String(days).padStart(2, '0');
+            if (document.getElementById('hours')) document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            if (document.getElementById('minutes')) document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            if (document.getElementById('seconds')) document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Case Study Tabs
+        document.querySelectorAll('.case-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.case-tab').forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                
+                document.querySelectorAll('.case-panel').forEach(panel => {
+                    panel.classList.remove('active');
+                });
+                const caseId = this.getAttribute('data-case');
+                document.getElementById('case-' + caseId).classList.add('active');
+            });
+        });
+
+        // Form submission
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const required = ['firstName', 'lastName', 'email', 'company'];
+            
+            required.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value) {
+                    isValid = false;
+                }
+            });
+            
+            if (!document.querySelector('input[name="role"]:checked')) {
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    company: document.getElementById('company').value,
+                    title: document.getElementById('title').value,
+                    role: document.querySelector('input[name="role"]:checked').value,
+                    locations: document.getElementById('locations').value,
+                    message: document.getElementById('message').value,
+                    timestamp: new Date().toISOString(),
+                    source: 'FLDC Landing Page'
+                };
+                
+                console.log('Form submission:', formData);
+                
+                // In production, send data to your CRM/backend here
+                // Example: fetch('/api/submit-form', { method: 'POST', body: JSON.stringify(formData) })
+                
+                // Redirect to thank you page
+                window.location.href = 'thank-you.html';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    if (entry.target.classList.contains('metrics-bar')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.governance-card, .process-step, .dev-feature, .metrics-bar').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> + Math.max(0, Math.round(totalSavings)).toLocaleString();
+            document.getElementById('roiPayback').textContent = monthlySavings > melCost ? '< 1 month' : monthlySavings > 0 ? '1-2 months' : 'Contact us';
         }
 
         document.getElementById('roiLocations')?.addEventListener('input', calculateROI);
