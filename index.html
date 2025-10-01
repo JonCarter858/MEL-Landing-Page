@@ -154,58 +154,18 @@
         }
 
         .logo {
-            font-size: 1.875rem;
-            font-weight: 800;
-            color: var(--indigo);
             text-decoration: none;
-            letter-spacing: -0.025em;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .logo-top {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-        }
-
-        .logo-mark {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: 800;
             transition: transform 0.3s ease;
-            flex-shrink: 0;
         }
 
-        .logo:hover .logo-mark {
-            transform: rotate(-5deg) scale(1.1);
+        .logo:hover {
+            transform: scale(1.05);
         }
 
-        .logo-main {
-            font-size: 1.875rem;
-            font-weight: 800;
-            line-height: 1;
-        }
-
-        .logo-by {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.875rem;
-            color: var(--gray-500);
-            font-weight: 500;
-        }
-
-        .logo-by img {
-            height: 28px;
+        .logo img {
+            height: 50px;
             width: auto;
         }
 
@@ -1774,15 +1734,8 @@
     <!-- Header -->
     <header id="header">
         <nav class="container" role="navigation" aria-label="Main navigation">
-            <a href="#" class="logo" aria-label="MEL Home">
-                <div class="logo-top">
-                    <div class="logo-mark">M</div>
-                    <span class="logo-main">MEL</span>
-                </div>
-                <span class="logo-by">
-                    by
-                    <img src="https://i.imgur.com/GyGXEPL.png" alt="JBecca">
-                </span>
+            <a href="#" class="logo" aria-label="MEL by JBecca Home">
+                <img src="https://i.imgur.com/Fs7vxpQ.png" alt="MEL by JBecca">
             </a>
             <div class="nav-links">
                 <a href="#platform">Platform</a>
