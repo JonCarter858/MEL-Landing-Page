@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ziebart Franchise Development - Market Intelligence Dashboard</title>
-    
+    <title>Ziebart Franchise Development - Complete Market Intelligence Dashboard</title>
     <style>
         * {
             margin: 0;
@@ -128,7 +127,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Cards and Grids */
+        /* Overview Section */
         .overview-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -172,7 +171,7 @@
             color: #ccc;
         }
 
-        /* Avatar Cards */
+        /* Avatar Grid */
         .avatar-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -220,6 +219,16 @@
             margin-right: 15px;
         }
 
+        .avatar-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .avatar-info p {
+            color: #888;
+            font-size: 14px;
+        }
+
         .awareness-badge {
             display: inline-block;
             padding: 5px 12px;
@@ -236,12 +245,44 @@
             padding: 25px;
         }
 
-        /* Journey */
+        .avatar-section {
+            margin-bottom: 25px;
+        }
+
+        .avatar-section h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #d4af37;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .avatar-list {
+            list-style: none;
+        }
+
+        .avatar-list li {
+            padding: 6px 0;
+            font-size: 14px;
+            color: #ccc;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .avatar-list li:before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+        }
+
+        /* Journey Visualization */
         .journey-flow {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin: 40px 0;
+            position: relative;
             padding: 20px 0;
         }
 
@@ -252,6 +293,7 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             margin: 0 10px;
+            position: relative;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -259,6 +301,11 @@
         .journey-stage:hover {
             background: rgba(212, 175, 55, 0.1);
             transform: translateY(-5px);
+        }
+
+        .journey-stage.active {
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
         }
 
         .stage-icon {
@@ -274,30 +321,64 @@
             color: #1a1a2e;
         }
 
-        /* Diary Entries */
-        .diary-entry {
-            background: rgba(0, 0, 0, 0.3);
-            border-left: 3px solid #d4af37;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 8px;
+        .stage-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
 
-        .diary-date {
+        .stage-description {
+            font-size: 13px;
             color: #888;
-            font-size: 12px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            line-height: 1.4;
         }
 
-        .diary-content {
-            font-style: italic;
-            line-height: 1.8;
-            color: #ccc;
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
         }
 
-        /* Creative Cards */
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+            margin: 2% auto;
+            padding: 40px;
+            border: 1px solid #d4af37;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 1100px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #d4af37;
+        }
+
+        /* Creative Concepts */
         .creative-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -318,7 +399,118 @@
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
         }
 
-        /* D2F2 */
+        .creative-title {
+            font-size: 18px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .creative-format {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .creative-copy {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .copy-element {
+            margin-bottom: 10px;
+        }
+
+        .copy-label {
+            font-size: 12px;
+            color: #d4af37;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .copy-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        /* Diary Entry */
+        .diary-entry {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid #d4af37;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .diary-date {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .diary-content {
+            font-style: italic;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 15px;
+            text-align: left;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #d4af37;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* CTA Buttons */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #d4af37;
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+        }
+
+        /* D2F2 Grid */
         .d2f2-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -359,77 +551,28 @@
             color: #d4af37;
         }
 
-        /* Loader */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #1a1a2e;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader-logo {
-            width: 80px;
-            height: 80px;
-            background: #d4af37;
-            border-radius: 12px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            color: #1a1a2e;
-            font-weight: bold;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .nav-tabs {
                 gap: 10px;
             }
             
-            .nav-tab {
-                padding: 10px 16px;
-                font-size: 12px;
-            }
-
             .journey-flow {
                 flex-direction: column;
             }
-
+            
             .journey-stage {
                 margin: 10px 0;
                 width: 100%;
+            }
+
+            .avatar-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-content">
-            <div class="loader-logo">Z</div>
-            <p style="color: #d4af37;">Loading Market Intelligence...</p>
-        </div>
-    </div>
-
     <!-- Header -->
     <header class="header">
         <div class="header-content">
@@ -437,7 +580,7 @@
                 <div class="logo">Z</div>
                 <div>
                     <div class="brand-title">Ziebart Franchise Development</div>
-                    <div class="brand-subtitle">MARKET INTELLIGENCE DASHBOARD</div>
+                    <div class="brand-subtitle">Complete Market Intelligence Dashboard</div>
                 </div>
             </div>
         </div>
@@ -445,13 +588,13 @@
 
     <!-- Navigation -->
     <div class="nav-tabs">
-        <div class="nav-tab active" onclick="showSection('overview')">EXECUTIVE OVERVIEW</div>
-        <div class="nav-tab" onclick="showSection('avatars')">AVATARS</div>
-        <div class="nav-tab" onclick="showSection('journey')">JOURNEY</div>
-        <div class="nav-tab" onclick="showSection('diaries')">DIARIES</div>
-        <div class="nav-tab" onclick="showSection('creative')">CREATIVE</div>
-        <div class="nav-tab" onclick="showSection('engagement')">STRATEGY</div>
-        <div class="nav-tab" onclick="showSection('d2f2')">D2F2</div>
+        <div class="nav-tab active" onclick="showSection('overview')">Executive Overview</div>
+        <div class="nav-tab" onclick="showSection('avatars')">Complete Avatars</div>
+        <div class="nav-tab" onclick="showSection('journey')">Customer Journey</div>
+        <div class="nav-tab" onclick="showSection('diaries')">Diary Insights</div>
+        <div class="nav-tab" onclick="showSection('creative')">Creative Concepts</div>
+        <div class="nav-tab" onclick="showSection('engagement')">Engagement Strategy</div>
+        <div class="nav-tab" onclick="showSection('d2f2')">D2F2 Analysis</div>
     </div>
 
     <!-- Main Content -->
@@ -483,232 +626,734 @@
                     <div class="metric-detail">Average journey from awareness to franchise agreement</div>
                 </div>
             </div>
+            
+            <div style="margin-top: 40px; padding: 30px; background: rgba(212, 175, 55, 0.05); border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2);">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">Core Value Propositions</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">Operational Excellence</h4>
+                        <ul style="list-style: none;">
+                            <li style="padding: 5px 0; color: #ccc;">✓ Proven playbooks with comprehensive training</li>
+                            <li style="padding: 5px 0; color: #ccc;">✓ National warranties reducing buyer hesitation</li>
+                            <li style="padding: 5px 0; color: #ccc;">✓ Standardized systems and quality control</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">Revenue Optimization</h4>
+                        <ul style="list-style: none;">
+                            <li style="padding: 5px 0; color: #ccc;">✓ Recurring revenue through memberships</li>
+                            <li style="padding: 5px 0; color: #ccc;">✓ Higher average tickets via brand trust</li>
+                            <li style="padding: 5px 0; color: #ccc;">✓ Fleet and dealer channel access</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">Growth Platform</h4>
+                        <ul style="list-style: none;">
+                            <li style="padding: 5px 0; color: #ccc;">✓ Protected territories with expansion rights</li>
+                            <li style="padding: 5px 0; color: #ccc;">✓ Clear path to multi-unit ownership</li>
+                            <li style="padding: 5px 0; color: #ccc;">✓ Vendor leverage and equipment financing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Avatars Section -->
+        <!-- Complete Avatars Section -->
         <div id="avatars" class="section">
-            <h2 style="font-size: 32px; margin-bottom: 10px;">Target Personas</h2>
-            <p style="color: #888; margin-bottom: 30px;">Detailed profiles of franchise prospects at each awareness stage</p>
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Complete Avatar Profiles</h2>
+            <p style="color: #888; margin-bottom: 30px;">Detailed personas with full psychographic and behavioral analysis</p>
             
             <div class="avatar-grid">
-                <!-- Taylor Nguyen -->
+                <!-- Taylor Nguyen - Problem Aware -->
                 <div class="avatar-card">
                     <div class="avatar-header">
                         <div class="avatar-meta">
                             <div class="avatar-initials">TN</div>
-                            <div>
+                            <div class="avatar-info">
                                 <h3>Taylor Nguyen</h3>
-                                <p style="color: #888;">Senior Operations Manager</p>
+                                <p>Senior Operations Manager</p>
                                 <span class="awareness-badge">Problem Aware</span>
                             </div>
                         </div>
-                        <p style="font-size: 13px; color: #ccc;">Phoenix, AZ • $115K + bonus • 10+ years logistics</p>
+                        <p style="font-size: 13px; color: #ccc; line-height: 1.6;">
+                            Phoenix, AZ • $115K + bonus • 10+ years logistics
+                        </p>
                     </div>
                     <div class="avatar-body">
-                        <h4 style="color: #d4af37; margin-bottom: 10px;">Key Pain Points</h4>
-                        <ul style="list-style: none;">
-                            <li>• Income tied to corporate volatility</li>
-                            <li>• Building someone else's asset</li>
-                            <li>• Analysis paralysis on ownership models</li>
-                        </ul>
-                        <h4 style="color: #d4af37; margin: 20px 0 10px;">Secret Desire</h4>
-                        <p style="font-style: italic;">"Become the reliable operator in town with a shop people trust."</p>
+                        <div class="avatar-section">
+                            <h4>Psychographics</h4>
+                            <ul class="avatar-list">
+                                <li>Analytical, pragmatic, achievement-oriented</li>
+                                <li>Family-centered, quietly competitive</li>
+                                <li>Values: Financial freedom, craftsmanship, reliability</li>
+                            </ul>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Pain Points</h4>
+                            <ul class="avatar-list">
+                                <li>Income tied to corporate volatility</li>
+                                <li>Building someone else's asset</li>
+                                <li>Analysis paralysis on ownership models</li>
+                            </ul>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Secret Desire</h4>
+                            <p style="font-size: 14px; color: #d4af37; font-style: italic;">
+                                "Become the reliable operator in town with a shop people trust, building a legacy asset."
+                            </p>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Media & Influences</h4>
+                            <ul class="avatar-list">
+                                <li>Books: E-Myth, Atomic Habits, Built to Sell</li>
+                                <li>Podcasts: My First Million, Acquisitions Anonymous</li>
+                                <li>Influencers: Marcus Lemonis, Alex Hormozi</li>
+                            </ul>
+                        </div>
+                        <button class="cta-button" onclick="showAvatarDetail('taylor')">View Full Profile</button>
                     </div>
                 </div>
 
-                <!-- Miguel Alvarez -->
+                <!-- Miguel Alvarez - Solution Aware -->
                 <div class="avatar-card">
                     <div class="avatar-header">
                         <div class="avatar-meta">
                             <div class="avatar-initials">MA</div>
-                            <div>
+                            <div class="avatar-info">
                                 <h3>Miguel Alvarez</h3>
-                                <p style="color: #888;">Independent Shop Owner</p>
+                                <p>Independent Shop Owner</p>
                                 <span class="awareness-badge">Solution Aware</span>
                             </div>
                         </div>
-                        <p style="font-size: 13px; color: #ccc;">Albuquerque, NM • 2-bay detailing/PPF shop</p>
+                        <p style="font-size: 13px; color: #ccc; line-height: 1.6;">
+                            Albuquerque, NM • $90-110K draw • 2-bay detailing/PPF
+                        </p>
                     </div>
                     <div class="avatar-body">
-                        <h4 style="color: #d4af37; margin-bottom: 10px;">Key Pain Points</h4>
-                        <ul style="list-style: none;">
-                            <li>• Growth stalled, inconsistent leads</li>
-                            <li>• Hiring/training gaps</li>
-                            <li>• Weak vendor leverage</li>
-                        </ul>
-                        <h4 style="color: #d4af37; margin: 20px 0 10px;">Secret Desire</h4>
-                        <p style="font-style: italic;">"Transform into a regional multi-location operation."</p>
+                        <div class="avatar-section">
+                            <h4>Psychographics</h4>
+                            <ul class="avatar-list">
+                                <li>Systems-minded craftsman with pride</li>
+                                <li>Competitive but steady under pressure</li>
+                                <li>Values: Reputation, fair pricing, apprenticeship</li>
+                            </ul>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Pain Points</h4>
+                            <ul class="avatar-list">
+                                <li>Growth stalled, inconsistent lead flow</li>
+                                <li>Hiring/training gaps, tech turnover</li>
+                                <li>Weak vendor leverage, no fleet access</li>
+                            </ul>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Secret Desire</h4>
+                            <p style="font-size: 14px; color: #d4af37; font-style: italic;">
+                                "Transform into a regional multi-location operation without losing quality."
+                            </p>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Media & Influences</h4>
+                            <ul class="avatar-list">
+                                <li>Books: Traction, Profit First, The Goal</li>
+                                <li>YouTube: AMMO NYC, Pan The Organizer</li>
+                                <li>Forums: r/AutoDetailing, SEMA news</li>
+                            </ul>
+                        </div>
+                        <button class="cta-button" onclick="showAvatarDetail('miguel')">View Full Profile</button>
                     </div>
                 </div>
 
-                <!-- Jordan Patel -->
+                <!-- Jordan Patel - Product Aware -->
                 <div class="avatar-card">
                     <div class="avatar-header">
                         <div class="avatar-meta">
                             <div class="avatar-initials">JP</div>
-                            <div>
+                            <div class="avatar-info">
                                 <h3>Jordan Patel</h3>
-                                <p style="color: #888;">Multi-Unit Franchisee</p>
+                                <p>Multi-Unit Franchisee</p>
                                 <span class="awareness-badge">Product Aware</span>
                             </div>
                         </div>
-                        <p style="font-size: 13px; color: #ccc;">Boise, ID • 2 franchise units</p>
+                        <p style="font-size: 13px; color: #ccc; line-height: 1.6;">
+                            Boise, ID • $160-190K draw • 2 franchise units
+                        </p>
                     </div>
                     <div class="avatar-body">
-                        <h4 style="color: #d4af37; margin-bottom: 10px;">Key Pain Points</h4>
-                        <ul style="list-style: none;">
-                            <li>• Choosing wrong banner</li>
-                            <li>• Territory protection concerns</li>
-                            <li>• Proving ROI beyond royalties</li>
-                        </ul>
-                        <h4 style="color: #d4af37; margin: 20px 0 10px;">Secret Desire</h4>
-                        <p style="font-style: italic;">"Build 3-5 location portfolio in 36 months."</p>
+                        <div class="avatar-section">
+                            <h4>Psychographics</h4>
+                            <ul class="avatar-list">
+                                <li>Strategic, data-driven, disciplined</li>
+                                <li>Brand-conscious portfolio builder</li>
+                                <li>Values: Operational excellence, scalability</li>
+                            </ul>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Pain Points</h4>
+                            <ul class="avatar-list">
+                                <li>Choosing wrong banner with weak support</li>
+                                <li>Territory protections and encroachment</li>
+                                <li>Proving ROI beyond royalties</li>
+                            </ul>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Secret Desire</h4>
+                            <p style="font-size: 14px; color: #d4af37; font-style: italic;">
+                                "Build 3-5 location portfolio in 36 months, then step into area coach role."
+                            </p>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Evaluation Criteria</h4>
+                            <ul class="avatar-list">
+                                <li>FDD Item 7/19 deep analysis</li>
+                                <li>Multi-unit operator references</li>
+                                <li>Territory mapping and demographics</li>
+                            </ul>
+                        </div>
+                        <button class="cta-button" onclick="showAvatarDetail('jordan')">View Full Profile</button>
+                    </div>
+                </div>
+
+                <!-- Casey Brooks - Most Aware -->
+                <div class="avatar-card">
+                    <div class="avatar-header">
+                        <div class="avatar-meta">
+                            <div class="avatar-initials">CB</div>
+                            <div class="avatar-info">
+                                <h3>Casey Brooks</h3>
+                                <p>Used-Car Lot Co-Owner</p>
+                                <span class="awareness-badge">Most Aware</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 13px; color: #ccc; line-height: 1.6;">
+                            Salt Lake City, UT • $140-170K • Ready to sign
+                        </p>
+                    </div>
+                    <div class="avatar-body">
+                        <div class="avatar-section">
+                            <h4>Psychographics</h4>
+                            <ul class="avatar-list">
+                                <li>Operator mindset, numbers-first</li>
+                                <li>Community-focused, steady executor</li>
+                                <li>Values: Transparency, predictable systems</li>
+                            </ul>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Final Concerns</h4>
+                            <ul class="avatar-list">
+                                <li>Site selection and build-out timing</li>
+                                <li>Hiring GM and lead technician</li>
+                                <li>Pre-opening marketing integration</li>
+                            </ul>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Secret Desire</h4>
+                            <p style="font-size: 14px; color: #d4af37; font-style: italic;">
+                                "Build flagship Ziebart for Wasatch Front, then two more in 30 months."
+                            </p>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Decision Drivers</h4>
+                            <ul class="avatar-list">
+                                <li>Territory confirmation and protection</li>
+                                <li>Launch support team availability</li>
+                                <li>Equipment lead times and financing</li>
+                            </ul>
+                        </div>
+                        <button class="cta-button" onclick="showAvatarDetail('casey')">View Full Profile</button>
+                    </div>
+                </div>
+
+                <!-- Riley Carter - Unaware -->
+                <div class="avatar-card">
+                    <div class="avatar-header">
+                        <div class="avatar-meta">
+                            <div class="avatar-initials">RC</div>
+                            <div class="avatar-info">
+                                <h3>Riley Carter</h3>
+                                <p>Enterprise SaaS Executive</p>
+                                <span class="awareness-badge">Unaware</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 13px; color: #ccc; line-height: 1.6;">
+                            Denver, CO • $130K + commission • Details his Tacoma
+                        </p>
+                    </div>
+                    <div class="avatar-body">
+                        <div class="avatar-section">
+                            <h4>Psychographics</h4>
+                            <ul class="avatar-list">
+                                <li>Curious, status-conscious, restless</li>
+                                <li>Analytical but skeptical of hype</li>
+                                <li>Values: Family time, financial independence</li>
+                            </ul>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Underlying Pain</h4>
+                            <ul class="avatar-list">
+                                <li>Volatile commissions, no equity</li>
+                                <li>Travel fatigue, missing family events</li>
+                                <li>Building someone else's ARR</li>
+                            </ul>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Unconscious Desire</h4>
+                            <p style="font-size: 14px; color: #d4af37; font-style: italic;">
+                                "Own a tangible, boring-beautiful business that compounds over 10+ years."
+                            </p>
+                        </div>
+                        <div class="avatar-section">
+                            <h4>Bridge to Awareness</h4>
+                            <ul class="avatar-list">
+                                <li>Already values vehicle care personally</li>
+                                <li>Interested in "boring businesses"</li>
+                                <li>Needs equity narrative, not franchise pitch</li>
+                            </ul>
+                        </div>
+                        <button class="cta-button" onclick="showAvatarDetail('riley')">View Full Profile</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Journey Section -->
+        <!-- Customer Journey Section -->
         <div id="journey" class="section">
-            <h2 style="font-size: 32px; margin-bottom: 10px;">Customer Journey</h2>
-            <p style="color: #888; margin-bottom: 30px;">The path from awareness to franchise ownership</p>
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Customer Journey Mapping</h2>
+            <p style="color: #888; margin-bottom: 30px;">Strategic progression from awareness to franchise ownership</p>
             
             <div class="journey-flow">
-                <div class="journey-stage">
+                <div class="journey-stage" onclick="showJourneyDetail('unaware')">
                     <div class="stage-icon">?</div>
-                    <h3>Unaware</h3>
-                    <p style="font-size: 13px; color: #888;">Restless professionals seeking equity</p>
+                    <div class="stage-title">Unaware</div>
+                    <div class="stage-description">Restless professionals seeking equity</div>
                 </div>
-                <div class="journey-stage">
+                <div class="journey-stage" onclick="showJourneyDetail('problem')">
                     <div class="stage-icon">!</div>
-                    <h3>Problem Aware</h3>
-                    <p style="font-size: 13px; color: #888;">Recognizing W-2 limitations</p>
+                    <div class="stage-title">Problem Aware</div>
+                    <div class="stage-description">Recognizing W-2 limitations</div>
                 </div>
-                <div class="journey-stage">
+                <div class="journey-stage" onclick="showJourneyDetail('solution')">
                     <div class="stage-icon">🔍</div>
-                    <h3>Solution Aware</h3>
-                    <p style="font-size: 13px; color: #888;">Evaluating franchise models</p>
+                    <div class="stage-title">Solution Aware</div>
+                    <div class="stage-description">Evaluating franchise models</div>
                 </div>
-                <div class="journey-stage">
+                <div class="journey-stage" onclick="showJourneyDetail('product')">
                     <div class="stage-icon">⚖</div>
-                    <h3>Product Aware</h3>
-                    <p style="font-size: 13px; color: #888;">Comparing Ziebart</p>
+                    <div class="stage-title">Product Aware</div>
+                    <div class="stage-description">Comparing Ziebart to alternatives</div>
                 </div>
-                <div class="journey-stage">
+                <div class="journey-stage" onclick="showJourneyDetail('most')">
                     <div class="stage-icon">✓</div>
-                    <h3>Most Aware</h3>
-                    <p style="font-size: 13px; color: #888;">Ready to sign</p>
+                    <div class="stage-title">Most Aware</div>
+                    <div class="stage-description">Ready to sign and launch</div>
                 </div>
             </div>
-        </div>
-
-        <!-- Diaries Section -->
-        <div id="diaries" class="section">
-            <h2 style="font-size: 32px; margin-bottom: 10px;">Diary Insights</h2>
-            <p style="color: #888; margin-bottom: 30px;">Authentic inner dialogue of each persona</p>
             
-            <div class="diary-entry">
-                <h3 style="color: #d4af37; margin-bottom: 15px;">Taylor Nguyen</h3>
-                <div class="diary-date">Thursday Evening - Home Office - Phoenix, AZ</div>
-                <div class="diary-content">
-                    Another reorg announcement today. Third one in two years. My spreadsheet shows I've saved enough for a down payment on... something. But what? Every franchise website feels like a carnival barker. Every indie path feels like reinventing the wheel. I keep driving past that ceramic coating shop on Camelback—always busy, always cars waiting. There's something there. People protecting what they own. Simple. Repeatable. Not sexy, but steady. I need a model with training wheels, not hero worship. Tomorrow I'm blocking two hours to map out non-negotiables. No more circling. Time to test a thesis with real data, real reference calls.
+            <div id="journey-details" style="margin-top: 40px; padding: 30px; background: rgba(255, 255, 255, 0.05); border-radius: 12px;">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">Journey Stage Strategy</h3>
+                <p style="color: #888;">Click any stage above to explore detailed tactics and messaging.</p>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">Content Strategy by Journey Stage</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Stage</th>
+                            <th>Content Types</th>
+                            <th>Key Messages</th>
+                            <th>Distribution</th>
+                            <th>Success Metrics</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Unaware</strong></td>
+                            <td>Educational videos, lifestyle content</td>
+                            <td>"Build equity, not quotas"</td>
+                            <td>YouTube, LinkedIn articles</td>
+                            <td>Video completion, article shares</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Problem Aware</strong></td>
+                            <td>Case studies, launch timelines</td>
+                            <td>"Systems beat heroics"</td>
+                            <td>Email nurture, webinars</td>
+                            <td>MQL conversion, webinar attendance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Solution Aware</strong></td>
+                            <td>ROI calculators, comparisons</td>
+                            <td>"Scale without losing craft"</td>
+                            <td>Retargeting, direct mail</td>
+                            <td>Calculator usage, demo requests</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Product Aware</strong></td>
+                            <td>Territory reports, FDD analysis</td>
+                            <td>"Proof behind the promise"</td>
+                            <td>1:1 outreach, SMS</td>
+                            <td>Discovery Day bookings</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Most Aware</strong></td>
+                            <td>Launch plans, financing guides</td>
+                            <td>"Ready when you are"</td>
+                            <td>Dedicated portal, direct calls</td>
+                            <td>Contract velocity</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Diary Insights Section -->
+        <div id="diaries" class="section">
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Persona Diary Insights</h2>
+            <p style="color: #888; margin-bottom: 30px;">Authentic inner dialogue revealing emotional triggers and decision drivers</p>
+            
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">Taylor Nguyen - Thursday Evening</h3>
+                <div class="diary-entry">
+                    <div class="diary-date">Home Office - Phoenix, AZ</div>
+                    <div class="diary-content">
+                        Another reorg announcement today. Third one in two years. My spreadsheet shows I've saved enough for a down payment on... something. But what? Every franchise website feels like a carnival barker. Every indie path feels like reinventing the wheel. I keep driving past that ceramic coating shop on Camelback—always busy, always cars waiting. There's something there. People protecting what they own. Simple. Repeatable. Not sexy, but steady. I need a model with training wheels, not hero worship. Tomorrow I'm blocking two hours to map out non-negotiables. No more circling. Time to test a thesis with real data, real reference calls. If I can run logistics for 500 SKUs, I can run a shop with 5 service types. The question isn't can I—it's which system gives me the best odds.
+                    </div>
                 </div>
             </div>
 
-            <div class="diary-entry">
-                <h3 style="color: #d4af37; margin-bottom: 15px;">Miguel Alvarez</h3>
-                <div class="diary-date">Saturday Morning - Shop Floor - Albuquerque, NM</div>
-                <div class="diary-content">
-                    6 AM and I'm already here, mixing compounds. Love the craft, hate the chaos. Lost another tech to that franchise down on Montgomery—better pay, actual training path, benefits. My Yelp reviews beat theirs, but their parking lot stays fuller. It's the warranty cards. The national ads. The fleet accounts I can't crack. I'm tired of being David without a slingshot. Spent last night comparing franchise FDDs. Most are just logos and invoices. But a few... actual field support, vendor deals that would cut my costs 20%, marketing that doesn't drain my account for "testing."
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">Miguel Alvarez - Saturday Morning</h3>
+                <div class="diary-entry">
+                    <div class="diary-date">Shop Floor - Albuquerque, NM</div>
+                    <div class="diary-content">
+                        6 AM and I'm already here, mixing compounds. Love the craft, hate the chaos. Lost another tech to that franchise down on Montgomery—better pay, actual training path, benefits. My Yelp reviews beat theirs, but their parking lot stays fuller. It's the warranty cards. The national ads. The fleet accounts I can't crack. I'm tired of being David without a slingshot. Spent last night comparing franchise FDDs. Most are just logos and invoices. But a few... actual field support, vendor deals that would cut my costs 20%, marketing that doesn't drain my account for "testing." My wife asked what I want for our anniversary. I want Tuesday afternoons off. I want a system that runs when I'm not here. I want my name on something bigger than my name.
+                    </div>
                 </div>
             </div>
 
-            <div class="diary-entry">
-                <h3 style="color: #d4af37; margin-bottom: 15px;">Jordan Patel</h3>
-                <div class="diary-date">Sunday Evening - Home Study - Boise, ID</div>
-                <div class="diary-content">
-                    Three FDDs spread across my desk. Ziebart, Competitor A, Competitor B. My CPA flagged the differences in Item 19. The attorneys marked territory language. But what I really need to know: who answers the phone at 7 PM when something breaks? Which ops manual is actually updated? Whose franchisees renew at 90%+ rates? The automotive protection space makes sense—recession-resistant, recurring revenue potential, growing vehicle ages. Tomorrow's calls: three multi-unit operators, two who converted from competitors, one who built from scratch.
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">Jordan Patel - Sunday Evening</h3>
+                <div class="diary-entry">
+                    <div class="diary-date">Home Study - Boise, ID</div>
+                    <div class="diary-content">
+                        Three FDDs spread across my desk. Ziebart, Competitor A, Competitor B. My CPA flagged the differences in Item 19. The attorneys marked territory language. But what I really need to know: who answers the phone at 7 PM when something breaks? Which ops manual is actually updated? Whose franchisees renew at 90%+ rates? The automotive protection space makes sense—recession-resistant, recurring revenue potential, growing vehicle ages. Ziebart has the history, but history doesn't equal execution. Tomorrow's calls: three multi-unit operators, two who converted from competitors, one who built from scratch. I need to hear exhaustion levels, not earnings claims. I need to know about Sunday mornings, not just Saturday nights. Territory 1432 could anchor the cluster. Time to stop analyzing and start interrogating.
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">Casey Brooks - Monday Morning</h3>
+                <div class="diary-entry">
+                    <div class="diary-date">Lot Office - Salt Lake City, UT</div>
+                    <div class="diary-content">
+                        Contract's on my desk. Territory's confirmed. Financing approved. But I keep running the launch sequence in my head. Site selection—I've got three options, need boots on the ground this week. Hiring—my GM prospect from Denver is wavering, need backup options. Equipment lead times are 8 weeks; that puts us into February. Pre-opening marketing should start 45 days out. My reconditioning manager wants in as a minority partner—could solve the expertise gap. The only thing worse than not starting is starting wrong. I've built businesses before, but never with someone else's brand on the door. The support better be real. The playbook better be current. The field team better answer their phones. Time to stop planning and start building. Signing Wednesday. Grand opening in Q2. No looking back.
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">Riley Carter - Wednesday Night</h3>
+                <div class="diary-entry">
+                    <div class="diary-date">Home Garage - Denver, CO</div>
+                    <div class="diary-content">
+                        9 PM and I'm detailing my Tacoma. Again. It's meditation, I guess. Tomorrow's another pipeline review where my "commits" might flip to "maybes" because procurement got cold feet. Six figures feels like treading water when it all hangs on some VP's mood. My neighbor just sold his HVAC business for 4x revenue. Four years, built it from nothing. Meanwhile, I'm building someone else's ARR. There's got to be something between corporate ladder and startup lottery. Something boring. Something that people need whether the economy's up or down. Something where the work you put in stays yours. I watch these YouTube channels about ceramic coating—oddly satisfying. Wonder what those shops actually make? Probably more stable than my commission swings. Maybe it's time to stop wondering and start researching. Real businesses. Real assets. Real equity.
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Creative Section -->
+        <!-- Creative Concepts Section -->
         <div id="creative" class="section">
-            <h2 style="font-size: 32px; margin-bottom: 10px;">Creative Concepts</h2>
-            <p style="color: #888; margin-bottom: 30px;">Campaign-ready creative for each awareness stage</p>
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Creative Concepts & Copy</h2>
+            <p style="color: #888; margin-bottom: 30px;">Campaign-ready creative with specific copy for each awareness stage</p>
             
             <div class="creative-grid">
+                <!-- Unaware Creative -->
                 <div class="creative-card">
-                    <h3 style="color: #d4af37;">The Equity Equation</h3>
-                    <p style="color: #888; margin: 10px 0;">YouTube Pre-Roll :15/:30</p>
-                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; margin-top: 15px;">
-                        <p style="margin-bottom: 10px;"><strong style="color: #d4af37;">Hook:</strong> "Still detailing your truck at 9 PM?"</p>
-                        <p style="margin-bottom: 10px;"><strong style="color: #d4af37;">Problem:</strong> "While you're building someone else's ARR..."</p>
-                        <p><strong style="color: #d4af37;">Solution:</strong> "The $500B automotive aftermarket isn't sexy. It's steady."</p>
+                    <div class="creative-title">The Equity Equation</div>
+                    <div class="creative-format">YouTube Pre-Roll :15/:30</div>
+                    <div class="creative-copy">
+                        <div class="copy-element">
+                            <div class="copy-label">Hook (0-3 sec)</div>
+                            <div class="copy-text">"Still detailing your truck at 9 PM?"</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Problem (4-10 sec)</div>
+                            <div class="copy-text">"While you're building someone else's ARR, your neighbor's building a business that'll sell for 4x revenue."</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Solution (11-25 sec)</div>
+                            <div class="copy-text">"The $500B automotive aftermarket isn't sexy. It's steady. Recurring revenue. Protected territories. Real equity."</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">CTA (26-30 sec)</div>
+                            <div class="copy-text">"Stop building quotas. Start building assets. ZiebartFranchise.com"</div>
+                        </div>
                     </div>
+                    <button class="cta-button">Download Creative Brief</button>
                 </div>
 
+                <!-- Problem Aware Creative -->
                 <div class="creative-card">
-                    <h3 style="color: #d4af37;">Systems Beat Heroes</h3>
-                    <p style="color: #888; margin: 10px 0;">LinkedIn Sponsored Post</p>
-                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; margin-top: 15px;">
-                        <p style="margin-bottom: 10px;"><strong style="color: #d4af37;">Headline:</strong> "From Operations Manager to Owner"</p>
-                        <p><strong style="color: #d4af37;">Body:</strong> "87% of our franchisees were first-time owners. They didn't need heroics. They needed systems."</p>
+                    <div class="creative-title">Systems Beat Heroes</div>
+                    <div class="creative-format">LinkedIn Sponsored Post</div>
+                    <div class="creative-copy">
+                        <div class="copy-element">
+                            <div class="copy-label">Headline</div>
+                            <div class="copy-text">"From Operations Manager to Owner: Your Playbook Already Exists"</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Body Copy</div>
+                            <div class="copy-text">"You've managed 500 SKUs, 50 employees, and million-dollar P&Ls. But you're still renting your success. What if your operational excellence could build YOUR equity? 87% of our franchisees were first-time owners. They didn't need heroics. They needed systems."</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Supporting Points</div>
+                            <div class="copy-text">
+                                • 30-60-90 day launch timeline (not theory)<br>
+                                • Protected East Coast territories available<br>
+                                • SBA-approved with 10% down options
+                            </div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">CTA</div>
+                            <div class="copy-text">"Download the Operations-to-Ownership Roadmap →"</div>
+                        </div>
                     </div>
+                    <button class="cta-button">Download Creative Brief</button>
                 </div>
 
+                <!-- Solution Aware Creative -->
                 <div class="creative-card">
-                    <h3 style="color: #d4af37;">Scale Your Standards</h3>
-                    <p style="color: #888; margin: 10px 0;">Facebook/Instagram Video</p>
-                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; margin-top: 15px;">
-                        <p style="margin-bottom: 10px;"><strong style="color: #d4af37;">Visual:</strong> Before/after shop transformation</p>
-                        <p><strong style="color: #d4af37;">Results:</strong> "+47% average ticket, 2nd location in 18 months"</p>
+                    <div class="creative-title">Scale Your Standards</div>
+                    <div class="creative-format">Facebook/Instagram Video</div>
+                    <div class="creative-copy">
+                        <div class="copy-element">
+                            <div class="copy-label">Opening Visual</div>
+                            <div class="copy-text">Split screen: Cluttered indie shop vs. Organized Ziebart bay</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Voiceover Script</div>
+                            <div class="copy-text">"Miguel built his reputation one car at a time. Five-star reviews. Loyal customers. But feast or famine. No leverage. No scale. Then he kept his standards and added our systems..."</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Results Overlay</div>
+                            <div class="copy-text">
+                                +47% average ticket<br>
+                                +65% customer retention<br>
+                                -30% vendor costs<br>
+                                2nd location in 18 months
+                            </div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Closing Message</div>
+                            <div class="copy-text">"Your craft. Our platform. Unlimited growth."</div>
+                        </div>
                     </div>
+                    <button class="cta-button">Download Creative Brief</button>
+                </div>
+
+                <!-- Product Aware Creative -->
+                <div class="creative-card">
+                    <div class="creative-title">Territory Intelligence Report</div>
+                    <div class="creative-format">Personalized Direct Mail</div>
+                    <div class="creative-copy">
+                        <div class="copy-element">
+                            <div class="copy-label">Envelope Teaser</div>
+                            <div class="copy-text">"Your Territory Analysis: 3 Competitors, 0 National Brands"</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Letter Opening</div>
+                            <div class="copy-text">"Jordan, Territory 1432 in Boise West has been reserved for your review. Here's what our analysis revealed..."</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Data Points</div>
+                            <div class="copy-text">
+                                Market Population: 247,000<br>
+                                Average Vehicle Age: 12.7 years<br>
+                                Projected Year 2: $1.8M<br>
+                                Expansion Rights: 2 additional territories
+                            </div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Competitive Intel</div>
+                            <div class="copy-text">"While competitors debate royalties, our multi-unit operators average 3.2 locations in 36 months. The difference? Territory protection, vendor leverage, and marketing that actually works."</div>
+                        </div>
+                    </div>
+                    <button class="cta-button">Download Creative Brief</button>
+                </div>
+
+                <!-- Most Aware Creative -->
+                <div class="creative-card">
+                    <div class="creative-title">Launch Command Center</div>
+                    <div class="creative-format">SMS + Portal Access</div>
+                    <div class="creative-copy">
+                        <div class="copy-element">
+                            <div class="copy-label">SMS Series</div>
+                            <div class="copy-text">
+                                Day 1: "Casey, your launch team is assembled. Sarah Martinez is your coach. First site visit Thursday 2 PM."<br><br>
+                                Day 7: "Equipment order confirmed. 6-week delivery vs standard 12. Your expedite saved 6 weeks."<br><br>
+                                Day 30: "3 GM candidates prescreened. Interviews Tuesday. Hiring partner has 94% placement rate."
+                            </div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Portal Dashboard Copy</div>
+                            <div class="copy-text">"Welcome to Your Command Center. 87 days to grand opening. Every milestone mapped. Every vendor vetted. Every question answered."</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Email Signature</div>
+                            <div class="copy-text">"We measure success in days to profit, not days to opening. Let's build something extraordinary. -Sarah"</div>
+                        </div>
+                    </div>
+                    <button class="cta-button">Download Creative Brief</button>
+                </div>
+
+                <!-- Regional Campaign -->
+                <div class="creative-card">
+                    <div class="creative-title">East Coast Expansion</div>
+                    <div class="creative-format">Regional Radio :60</div>
+                    <div class="creative-copy">
+                        <div class="copy-element">
+                            <div class="copy-label">Opening (0-10 sec)</div>
+                            <div class="copy-text">"From Boston to Atlanta, Charlotte to Cleveland—Americans are keeping their vehicles longer than ever."</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Problem (11-25 sec)</div>
+                            <div class="copy-text">"But who's protecting their investment? Independent shops lack warranties. Dealers overcharge. There's a gap in the market worth $500 billion."</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">Solution (26-45 sec)</div>
+                            <div class="copy-text">"Ziebart is claiming prime territories east of the Mississippi. Protected markets. Proven systems. Recurring revenue through memberships. This isn't a franchise opportunity. It's an equity accelerator."</div>
+                        </div>
+                        <div class="copy-element">
+                            <div class="copy-label">CTA (46-60 sec)</div>
+                            <div class="copy-text">"Territory selection starts next Tuesday. First come, first choice. ZiebartEastCoast.com or 888-ZIEBART."</div>
+                        </div>
+                    </div>
+                    <button class="cta-button">Download Creative Brief</button>
                 </div>
             </div>
         </div>
 
-        <!-- Strategy Section -->
+        <!-- Engagement Strategy Section -->
         <div id="engagement" class="section">
             <h2 style="font-size: 32px; margin-bottom: 10px;">Engagement Strategy</h2>
-            <p style="color: #888; margin-bottom: 30px;">Tactics to move prospects through the funnel</p>
+            <p style="color: #888; margin-bottom: 30px;">Stage-specific tactics to move prospects through the franchise decision journey</p>
             
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">Conversion Pathways by Awareness Stage</h3>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Stage</th>
+                            <th>Primary Channel</th>
+                            <th>Message Focus</th>
+                            <th>Proof Points</th>
+                            <th>Next Step</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Unaware</strong></td>
+                            <td>YouTube, LinkedIn Articles</td>
+                            <td>Equity vs. Salary narrative</td>
+                            <td>Market size, stability stats</td>
+                            <td>Business assessment tool</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Problem Aware</strong></td>
+                            <td>Webinars, Email Nurture</td>
+                            <td>Systems over heroics</td>
+                            <td>Case studies, timelines</td>
+                            <td>Territory exploration call</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Solution Aware</strong></td>
+                            <td>Calculators, Comparisons</td>
+                            <td>Platform advantages</td>
+                            <td>ROI models, vendor savings</td>
+                            <td>Franchise specialist consultation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Product Aware</strong></td>
+                            <td>Direct Outreach, FDD Review</td>
+                            <td>Competitive differentiation</td>
+                            <td>Territory data, Item 19</td>
+                            <td>Discovery Day attendance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Most Aware</strong></td>
+                            <td>1:1 Support, Launch Portal</td>
+                            <td>Execution confidence</td>
+                            <td>Launch timeline, team intros</td>
+                            <td>Contract signing</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div class="overview-grid">
                 <div class="metric-card">
-                    <div class="metric-label">Unaware → Problem</div>
-                    <div style="margin-top: 15px;">
-                        <p style="color: #d4af37; margin-bottom: 10px;">YouTube Pre-Roll Campaign</p>
-                        <p style="font-size: 14px; color: #ccc;">Focus: Equity vs. salary narrative<br>CTA: Business assessment tool</p>
-                    </div>
+                    <div class="metric-label">Monthly MQL Target</div>
+                    <div class="metric-value">150</div>
+                    <div class="metric-detail">Qualified franchise inquiries from East Coast markets</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-label">Problem → Solution</div>
-                    <div style="margin-top: 15px;">
-                        <p style="color: #d4af37; margin-bottom: 10px;">LinkedIn Nurture Series</p>
-                        <p style="font-size: 14px; color: #ccc;">Focus: Systems over heroics<br>CTA: Territory exploration call</p>
-                    </div>
+                    <div class="metric-label">Discovery Day Conversion</div>
+                    <div class="metric-value">65%</div>
+                    <div class="metric-detail">Attendees who move to contract within 30 days</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-label">Solution → Product</div>
-                    <div style="margin-top: 15px;">
-                        <p style="color: #d4af37; margin-bottom: 10px;">ROI Calculator</p>
-                        <p style="font-size: 14px; color: #ccc;">Focus: Platform advantages<br>CTA: Franchise consultation</p>
-                    </div>
+                    <div class="metric-label">Average Decision Time</div>
+                    <div class="metric-value">4.5mo</div>
+                    <div class="metric-detail">From first touch to signed agreement</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-label">Product → Most Aware</div>
-                    <div style="margin-top: 15px;">
-                        <p style="color: #d4af37; margin-bottom: 10px;">Territory Analysis</p>
-                        <p style="font-size: 14px; color: #ccc;">Focus: Market opportunity<br>CTA: Discovery Day</p>
+                    <div class="metric-label">Cost per Acquisition</div>
+                    <div class="metric-value">$4,200</div>
+                    <div class="metric-detail">Full funnel marketing investment per signing</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 30px; background: rgba(212, 175, 55, 0.05); border-radius: 12px;">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">East Coast Market Priorities</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">Tier 1 Markets</h4>
+                        <ul style="list-style: none;">
+                            <li style="padding: 5px 0; color: #ccc;">• Charlotte, NC</li>
+                            <li style="padding: 5px 0; color: #ccc;">• Richmond, VA</li>
+                            <li style="padding: 5px 0; color: #ccc;">• Columbus, OH</li>
+                            <li style="padding: 5px 0; color: #ccc;">• Nashville, TN</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">Tier 2 Markets</h4>
+                        <ul style="list-style: none;">
+                            <li style="padding: 5px 0; color: #ccc;">• Louisville, KY</li>
+                            <li style="padding: 5px 0; color: #ccc;">• Birmingham, AL</li>
+                            <li style="padding: 5px 0; color: #ccc;">• Greenville, SC</li>
+                            <li style="padding: 5px 0; color: #ccc;">• Rochester, NY</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">Growth Indicators</h4>
+                        <ul style="list-style: none;">
+                            <li style="padding: 5px 0; color: #ccc;">• Vehicle age: 11+ years</li>
+                            <li style="padding: 5px 0; color: #ccc;">• HHI: $65K+ median</li>
+                            <li style="padding: 5px 0; color: #ccc;">• Population: 150K+ metro</li>
+                            <li style="padding: 5px 0; color: #ccc;">• Competition: <3 nationals</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- D2F2 Section -->
+        <!-- D2F2 Analysis Section -->
         <div id="d2f2" class="section">
-            <h2 style="font-size: 32px; margin-bottom: 10px;">D2F2 Analysis</h2>
-            <p style="color: #888; margin-bottom: 30px;">Dreams, Desires, Fears & Frustrations</p>
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Dreams, Desires, Fears & Frustrations</h2>
+            <p style="color: #888; margin-bottom: 30px;">Deep psychological drivers influencing franchise decisions</p>
             
             <div class="d2f2-grid">
                 <div class="d2f2-card">
@@ -719,6 +1364,11 @@
                         <li>Time freedom for family life</li>
                         <li>Multi-unit regional expansion</li>
                         <li>Sellable asset/legacy business</li>
+                        <li>Professional team without firefighting</li>
+                        <li>Stress-free family vacations</li>
+                        <li>Recognition as top operator</li>
+                        <li>Mentoring young technicians</li>
+                        <li>5-7 year exit at strong multiple</li>
                     </ul>
                 </div>
                 
@@ -728,8 +1378,13 @@
                         <li>Predictable monthly cash flow</li>
                         <li>National brand trust & warranties</li>
                         <li>Recurring revenue memberships</li>
-                        <li>Training & certification pipeline</li>
+                        <li>Comprehensive training pipeline</li>
                         <li>Protected territory rights</li>
+                        <li>Field support with clear SLAs</li>
+                        <li>Vendor leverage on equipment</li>
+                        <li>Local SEO + marketing engine</li>
+                        <li>Fleet/dealer channel access</li>
+                        <li>Clear launch playbook & KPIs</li>
                     </ul>
                 </div>
                 
@@ -738,8 +1393,13 @@
                     <ul class="d2f2-list">
                         <li>Choosing wrong franchise/territory</li>
                         <li>Paying royalties without ROI lift</li>
-                        <li>Unable to recruit technicians</li>
+                        <li>Unable to recruit skilled technicians</li>
+                        <li>Demand slump during ramp period</li>
                         <li>Territory encroachment issues</li>
+                        <li>Cost overruns in build-out phase</li>
+                        <li>Debt burden from launch delays</li>
+                        <li>Losing autonomy to rigid rules</li>
+                        <li>Warranty claims impacting cash</li>
                         <li>Economic downturn exposure</li>
                     </ul>
                 </div>
@@ -750,37 +1410,485 @@
                         <li>Marketing agencies "testing" budgets</li>
                         <li>Inconsistent lead flow/seasonality</li>
                         <li>Reinventing SOPs from scratch</li>
+                        <li>Poor vendor terms as independent</li>
                         <li>Confusing FDD/legal language</li>
+                        <li>Disorganized back-office systems</li>
+                        <li>Price shoppers eroding margins</li>
+                        <li>Thin technician hiring pipeline</li>
+                        <li>Unclear launch timelines</li>
                         <li>Site selection/permit delays</li>
                     </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 30px; background: rgba(212, 175, 55, 0.05); border-radius: 12px;">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">Strategic Response Matrix</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 15px;">Addressing Dreams & Desires</h4>
+                        <ul style="list-style: none;">
+                            <li style="padding: 8px 0; color: #ccc;">✓ Proven path to multi-unit ownership with protected territories</li>
+                            <li style="padding: 8px 0; color: #ccc;">✓ Comprehensive training reducing time to profitability</li>
+                            <li style="padding: 8px 0; color: #ccc;">✓ Marketing engine generating consistent lead flow</li>
+                            <li style="padding: 8px 0; color: #ccc;">✓ Vendor relationships providing 20-30% cost savings</li>
+                            <li style="padding: 8px 0; color: #ccc;">✓ Clear succession planning for eventual exit</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 15px;">Mitigating Fears & Frustrations</h4>
+                        <ul style="list-style: none;">
+                            <li style="padding: 8px 0; color: #ccc;">✓ Territory analysis with demographic guarantees</li>
+                            <li style="padding: 8px 0; color: #ccc;">✓ Item 19 transparency with real operator data</li>
+                            <li style="padding: 8px 0; color: #ccc;">✓ Recruiting partnerships for technician pipeline</li>
+                            <li style="padding: 8px 0; color: #ccc;">✓ 120-day launch timeline with milestone tracking</li>
+                            <li style="padding: 8px 0; color: #ccc;">✓ Dedicated field support with 24-hour response SLA</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        // Hide loader after page loads
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loader').classList.add('hidden');
-            }, 1000);
-        });
+    <!-- Modal for Details -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
 
-        // Navigation function
+    <script>
+        // Navigation functionality
         function showSection(sectionId) {
-            // Hide all sections
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
-            
-            // Show selected section
             document.getElementById(sectionId).classList.add('active');
             
-            // Update nav tabs
             document.querySelectorAll('.nav-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             event.target.classList.add('active');
+        }
+
+        // Avatar detail data
+        const avatarDetails = {
+            taylor: {
+                name: 'Taylor Nguyen - Complete Profile',
+                content: `
+                    <h3 style="color: #d4af37; margin-bottom: 20px;">Demographics & Background</h3>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li><strong>Location:</strong> Phoenix, AZ (open to relocate within Southwest)</li>
+                        <li><strong>Current Role:</strong> Senior Operations Manager, Logistics Company</li>
+                        <li><strong>Income:</strong> $115,000 base + 20-30% bonus (volatile)</li>
+                        <li><strong>Experience:</strong> 10+ years managing 500+ SKUs, 50+ employees</li>
+                        <li><strong>Education:</strong> BS Business Administration, MBA Operations</li>
+                        <li><strong>Family:</strong> Married, 2 children (ages 8, 11)</li>
+                        <li><strong>Capital Access:</strong> $300-600K (savings, HELOC, SBA)</li>
+                    </ul>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Behavioral Patterns</h3>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li><strong>Research Style:</strong> 2-3 evening sessions weekly, deep weekend dives</li>
+                        <li><strong>Decision Process:</strong> Spreadsheet modeling, risk matrices, reference checks</li>
+                        <li><strong>Information Sources:</strong> Entrepreneur.com, Reddit r/smallbusiness, LinkedIn</li>
+                        <li><strong>Purchase History:</strong> $75-500/month on courses, reports, consultations</li>
+                    </ul>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Emotional Triggers</h3>
+                    <p style="line-height: 1.8; color: #ccc;">
+                        <strong>Primary Fear:</strong> "Missing the window to build my own asset while I still have energy and capital."<br>
+                        <strong>Core Motivation:</strong> Create predictable, systems-driven business allowing family time.<br>
+                        <strong>Success Vision:</strong> Known in community as reliable operator who runs a tight ship.
+                    </p>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Objections & Responses</h3>
+                    <table style="width: 100%; margin-top: 15px;">
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px; color: #888;">Objection</td>
+                            <td style="padding: 10px; color: #ccc;">Response Strategy</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px;">"What if I pick wrong brand?"</td>
+                            <td style="padding: 10px;">Provide reference calls, Item 19 data, territory guarantees</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px;">"Can I hire/retain techs?"</td>
+                            <td style="padding: 10px;">Show training pipeline, certification paths, recruiting toolkit</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px;">"Is demand really recurring?"</td>
+                            <td style="padding: 10px;">Membership data, vehicle age trends, protection plan adoption</td>
+                        </tr>
+                    </table>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Conversion Strategy</h3>
+                    <ol style="line-height: 1.8; color: #ccc;">
+                        <li>Lead with operational excellence narrative</li>
+                        <li>Provide detailed launch timeline with milestones</li>
+                        <li>Connect with similar background franchisees</li>
+                        <li>Offer conservative pro forma with SBA guidance</li>
+                        <li>Include spouse in Discovery Day experience</li>
+                    </ol>
+                `
+            },
+            miguel: {
+                name: 'Miguel Alvarez - Complete Profile',
+                content: `
+                    <h3 style="color: #d4af37; margin-bottom: 20px;">Business Background</h3>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li><strong>Current Business:</strong> 2-bay independent detailing/tint/PPF shop</li>
+                        <li><strong>Location:</strong> Albuquerque, NM (willing to expand regionally)</li>
+                        <li><strong>Annual Revenue:</strong> $450-550K (seasonal fluctuations)</li>
+                        <li><strong>Owner Draw:</strong> $90-110K</li>
+                        <li><strong>Years in Business:</strong> 7 years</li>
+                        <li><strong>Employees:</strong> 3-4 techs (high turnover)</li>
+                        <li><strong>Capital Access:</strong> $250-500K (savings, business equity, SBA)</li>
+                    </ul>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Operational Challenges</h3>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li><strong>Lead Generation:</strong> Feast/famine cycles, 40% seasonality swings</li>
+                        <li><strong>Staffing:</strong> Lost 3 techs to franchises in 18 months</li>
+                        <li><strong>Marketing:</strong> $2-5K monthly burn, unclear ROI</li>
+                        <li><strong>Growth Barriers:</strong> No fleet accounts, weak vendor terms, limited warranties</li>
+                    </ul>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Franchise Evaluation Criteria</h3>
+                    <p style="line-height: 1.8; color: #ccc;">
+                        <strong>Must-Haves:</strong> Real field support, not just a logo. Vendor deals cutting costs 20%+. Marketing that generates measurable leads.<br>
+                        <strong>Deal-Breakers:</strong> Vague territories, weak training, "test and learn" marketing.<br>
+                        <strong>Success Metrics:</strong> ROI within 18 months including royalties, path to second location.
+                    </p>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Conversion Path</h3>
+                    <ol style="line-height: 1.8; color: #ccc;">
+                        <li>Shop visit from development team</li>
+                        <li>P&L analysis showing lift opportunity</li>
+                        <li>Vendor savings documentation</li>
+                        <li>Training curriculum walkthrough</li>
+                        <li>Operator-to-operator reference calls</li>
+                        <li>Conversion timeline with support plan</li>
+                    </ol>
+                `
+            },
+            jordan: {
+                name: 'Jordan Patel - Complete Profile',
+                content: `
+                    <h3 style="color: #d4af37; margin-bottom: 20px;">Multi-Unit Operator Profile</h3>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li><strong>Current Portfolio:</strong> 2 home service franchise units</li>
+                        <li><strong>Location:</strong> Boise, ID (scouting Mountain States)</li>
+                        <li><strong>Combined Revenue:</strong> $2.8M across units</li>
+                        <li><strong>Owner Draw:</strong> $160-190K</li>
+                        <li><strong>Management Structure:</strong> GM in each location</li>
+                        <li><strong>Background:</strong> Former enterprise sales director</li>
+                        <li><strong>Capital Access:</strong> $500K-1.2M (cash, portfolio leverage, SBA)</li>
+                    </ul>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Expansion Strategy</h3>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li><strong>Goal:</strong> 3-5 automotive protection units in 36 months</li>
+                        <li><strong>Structure:</strong> Area developer or multi-unit franchise</li>
+                        <li><strong>Markets:</strong> Boise, Twin Falls, Pocatello cluster</li>
+                        <li><strong>Exit Plan:</strong> Portfolio sale in 5-7 years at 4-5x EBITDA</li>
+                    </ul>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Due Diligence Focus</h3>
+                    <table style="width: 100%; margin-top: 15px;">
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px; color: #888;">Analysis Area</td>
+                            <td style="padding: 10px; color: #ccc;">Key Questions</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px;">Territory</td>
+                            <td style="padding: 10px;">Protection radius? Expansion rights? Demographics?</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px;">Economics</td>
+                            <td style="padding: 10px;">Item 19 ranges? Multi-unit economies? Vendor savings?</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px;">Support</td>
+                            <td style="padding: 10px;">Field visit frequency? Training depth? Marketing SLAs?</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px;">Operations</td>
+                            <td style="padding: 10px;">Manager training? Bench building? Succession planning?</td>
+                        </tr>
+                    </table>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Decision Drivers</h3>
+                    <p style="line-height: 1.8; color: #ccc;">
+                        Will compare Ziebart against 2-3 automotive alternatives. Decision based on territory quality, training systems, vendor leverage, and multi-unit operator success rates. Needs VP-level strategy discussion, not sales pitch.
+                    </p>
+                `
+            },
+            casey: {
+                name: 'Casey Brooks - Complete Profile',
+                content: `
+                    <h3 style="color: #d4af37; margin-bottom: 20px;">Ready-to-Launch Profile</h3>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li><strong>Current Business:</strong> Co-owner small used car lot + service bay</li>
+                        <li><strong>Location:</strong> Salt Lake City, UT</li>
+                        <li><strong>Annual Revenue:</strong> $1.8M (lot + service combined)</li>
+                        <li><strong>Owner Draw:</strong> $140-170K</li>
+                        <li><strong>Background:</strong> Former F&I manager at dealership</li>
+                        <li><strong>Partner:</strong> Reconditioning manager (minority investor)</li>
+                        <li><strong>Capital Ready:</strong> $600K-1M (approved financing)</li>
+                    </ul>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Launch Concerns</h3>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li><strong>Site Selection:</strong> 3 options identified, need guidance</li>
+                        <li><strong>Hiring:</strong> GM candidate wavering, need backup plan</li>
+                        <li><strong>Equipment:</strong> 8-week lead times affecting timeline</li>
+                        <li><strong>Marketing:</strong> When to start pre-opening campaign?</li>
+                        <li><strong>Integration:</strong> How to leverage existing customer base?</li>
+                    </ul>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Success Requirements</h3>
+                    <p style="line-height: 1.8; color: #ccc;">
+                        <strong>Week 1-2:</strong> Site selection support, contractor introductions<br>
+                        <strong>Week 3-4:</strong> Architect plans, permit expediting<br>
+                        <strong>Week 5-8:</strong> Hiring pipeline activation, training scheduled<br>
+                        <strong>Week 9-12:</strong> Equipment installation, soft opening prep<br>
+                        <strong>Week 13-16:</strong> Grand opening execution
+                    </p>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Support Needs</h3>
+                    <ol style="line-height: 1.8; color: #ccc;">
+                        <li>Dedicated launch coach with weekly check-ins</li>
+                        <li>Expedited equipment ordering program</li>
+                        <li>Recruiting firm partnership for key hires</li>
+                        <li>90-day pre/post opening marketing calendar</li>
+                        <li>Daily accessibility during first 30 days</li>
+                    </ol>
+                `
+            },
+            riley: {
+                name: 'Riley Carter - Complete Profile',
+                content: `
+                    <h3 style="color: #d4af37; margin-bottom: 20px;">Unaware Prospect Profile</h3>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li><strong>Current Role:</strong> Senior Account Executive, Enterprise SaaS</li>
+                        <li><strong>Location:</strong> Denver, CO</li>
+                        <li><strong>Income:</strong> $130K base + $50-100K commission (volatile)</li>
+                        <li><strong>Experience:</strong> 8 years B2B sales, consistent President's Club</li>
+                        <li><strong>Education:</strong> BS Marketing, various sales certifications</li>
+                        <li><strong>Personal:</strong> Married, 1 child (age 3), owns home</li>
+                        <li><strong>Hobbies:</strong> Detailing his Tacoma, hiking, personal finance</li>
+                    </ul>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Underlying Dissatisfaction</h3>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li><strong>Career Fatigue:</strong> 3rd territory realignment in 2 years</li>
+                        <li><strong>Income Instability:</strong> Commission swings $50K+ annually</li>
+                        <li><strong>Travel Impact:</strong> Missing bedtime stories 3 nights/week</li>
+                        <li><strong>Equity Envy:</strong> Neighbor sold HVAC business for 4x revenue</li>
+                        <li><strong>Future Anxiety:</strong> What happens at 45 if he's still quota-carrying?</li>
+                    </ul>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Awareness Triggers</h3>
+                    <p style="line-height: 1.8; color: #ccc;">
+                        <strong>Content Hooks:</strong> "Build equity not quotas", "Boring businesses win", "Your detailing obsession could be your business"<br>
+                        <strong>Proof Points:</strong> Market stability data, recession resistance, recurring revenue models<br>
+                        <strong>Social Proof:</strong> Stories of sales executives who successfully transitioned
+                    </p>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Education Path</h3>
+                    <ol style="line-height: 1.8; color: #ccc;">
+                        <li>YouTube content on automotive aftermarket opportunity</li>
+                        <li>LinkedIn articles on equity vs salary wealth building</li>
+                        <li>Free assessment: "Is business ownership right for you?"</li>
+                        <li>Workshop: "From Corporate to Owner in 12 Months"</li>
+                        <li>Introduction to franchise model benefits</li>
+                        <li>Gradual reveal of Ziebart opportunity</li>
+                    </ol>
+
+                    <h3 style="color: #d4af37; margin: 20px 0;">Messaging Evolution</h3>
+                    <table style="width: 100%; margin-top: 15px;">
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px; color: #888;">Phase</td>
+                            <td style="padding: 10px; color: #ccc;">Message Focus</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px;">Week 1-4</td>
+                            <td style="padding: 10px;">Problem agitation: volatility, no equity, time poverty</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px;">Week 5-8</td>
+                            <td style="padding: 10px;">Solution introduction: stable businesses, recurring revenue</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px;">Week 9-12</td>
+                            <td style="padding: 10px;">Category education: automotive aftermarket opportunity</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 10px;">Week 13-16</td>
+                            <td style="padding: 10px;">Franchise benefits: systems, support, proven model</td>
+                        </tr>
+                    </table>
+                `
+            }
+        };
+
+        function showAvatarDetail(avatar) {
+            const detail = avatarDetails[avatar];
+            document.getElementById('modal-body').innerHTML = `
+                <h2 style="color: #d4af37; margin-bottom: 20px;">${detail.name}</h2>
+                ${detail.content}
+            `;
+            document.getElementById('modal').classList.add('active');
+        }
+
+        // Journey detail data
+        const journeyDetails = {
+            unaware: {
+                content: `
+                    <h3 style="color: #d4af37; margin-bottom: 20px;">Unaware Stage Strategy</h3>
+                    <p style="line-height: 1.8; color: #ccc;">
+                        Prospects don't yet recognize their dissatisfaction as a solvable problem. Focus on lifestyle pain and equity narrative.
+                    </p>
+                    
+                    <h4 style="color: #d4af37; margin: 20px 0 10px;">Primary Channels</h4>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li>YouTube pre-roll on automotive and business content</li>
+                        <li>LinkedIn thought leadership articles</li>
+                        <li>Podcast sponsorships (business, automotive, lifestyle)</li>
+                    </ul>
+
+                    <h4 style="color: #d4af37; margin: 20px 0 10px;">Key Messages</h4>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li>"Stop building someone else's empire"</li>
+                        <li>"The $500B market hiding in plain sight"</li>
+                        <li>"Boring businesses = predictable profits"</li>
+                    </ul>
+
+                    <h4 style="color: #d4af37; margin: 20px 0 10px;">Content Examples</h4>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li>Video: "Why Your Neighbor's Business Sold for 4x Revenue"</li>
+                        <li>Article: "The Hidden Cost of a Six-Figure W-2"</li>
+                        <li>Tool: "Equity vs Salary Wealth Calculator"</li>
+                    </ul>
+                `
+            },
+            problem: {
+                content: `
+                    <h3 style="color: #d4af37; margin-bottom: 20px;">Problem Aware Stage Strategy</h3>
+                    <p style="line-height: 1.8; color: #ccc;">
+                        Prospects recognize W-2 limitations but face analysis paralysis on solutions. Provide frameworks and timelines.
+                    </p>
+                    
+                    <h4 style="color: #d4af37; margin: 20px 0 10px;">Primary Tactics</h4>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li>Educational webinars with operator panels</li>
+                        <li>30-60-90 day launch timelines</li>
+                        <li>Conservative pro formas with SBA guidance</li>
+                        <li>Case studies from similar backgrounds</li>
+                    </ul>
+
+                    <h4 style="color: #d4af37; margin: 20px 0 10px;">Objection Handling</h4>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li>Fear: Analysis paralysis → Response: Clear evaluation framework</li>
+                        <li>Fear: Operational blindspots → Response: Comprehensive training preview</li>
+                        <li>Fear: Financial risk → Response: SBA options, conservative modeling</li>
+                    </ul>
+                `
+            },
+            solution: {
+                content: `
+                    <h3 style="color: #d4af37; margin-bottom: 20px;">Solution Aware Stage Strategy</h3>
+                    <p style="line-height: 1.8; color: #ccc;">
+                        Prospects believe franchising can help but need proof of platform value beyond a logo.
+                    </p>
+                    
+                    <h4 style="color: #d4af37; margin: 20px 0 10px;">Differentiation Focus</h4>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li>Vendor savings documentation (20-30% reduction)</li>
+                        <li>Training curriculum with certification paths</li>
+                        <li>Marketing engine with measurable lead generation</li>
+                        <li>Warranty programs unavailable to independents</li>
+                    </ul>
+
+                    <h4 style="color: #d4af37; margin: 20px 0 10px;">Conversion Tools</h4>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li>ROI calculator with royalty offset modeling</li>
+                        <li>Before/after P&Ls from converted independents</li>
+                        <li>Fleet/dealer partnership documentation</li>
+                        <li>Field support organization chart and SLAs</li>
+                    </ul>
+                `
+            },
+            product: {
+                content: `
+                    <h3 style="color: #d4af37; margin-bottom: 20px;">Product Aware Stage Strategy</h3>
+                    <p style="line-height: 1.8; color: #ccc;">
+                        Prospects are comparing Ziebart to 2-3 alternatives. Win on territory quality, support depth, and proven economics.
+                    </p>
+                    
+                    <h4 style="color: #d4af37; margin: 20px 0 10px;">Competitive Advantages</h4>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li>60+ year brand history and trust</li>
+                        <li>Comprehensive warranty programs</li>
+                        <li>Protected territories with expansion rights</li>
+                        <li>Multi-unit operator success rates</li>
+                    </ul>
+
+                    <h4 style="color: #d4af37; margin: 20px 0 10px;">Decision Support Materials</h4>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li>Territory analysis with demographic overlays</li>
+                        <li>Item 19 performance data (where permissible)</li>
+                        <li>Reference calls with matched-profile operators</li>
+                        <li>Discovery Day with operations deep-dive</li>
+                    </ul>
+                `
+            },
+            most: {
+                content: `
+                    <h3 style="color: #d4af37; margin-bottom: 20px;">Most Aware Stage Strategy</h3>
+                    <p style="line-height: 1.8; color: #ccc;">
+                        Prospects are ready to sign but need execution confidence. Remove friction and accelerate launch.
+                    </p>
+                    
+                    <h4 style="color: #d4af37; margin: 20px 0 10px;">Launch Acceleration</h4>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li>Dedicated launch coach assignment</li>
+                        <li>120-day countdown with daily milestones</li>
+                        <li>Expedited equipment and permitting</li>
+                        <li>Recruiting partnership for key hires</li>
+                        <li>Pre-opening marketing activation</li>
+                    </ul>
+
+                    <h4 style="color: #d4af37; margin: 20px 0 10px;">Success Metrics</h4>
+                    <ul style="line-height: 1.8; color: #ccc;">
+                        <li>Contract to opening: <120 days</li>
+                        <li>First month revenue: $40-60K</li>
+                        <li>Membership signups: 50+ in first 90 days</li>
+                        <li>Break-even: Month 6-9</li>
+                    </ul>
+                `
+            }
+        };
+
+        function showJourneyDetail(stage) {
+            document.getElementById('journey-details').innerHTML = journeyDetails[stage].content;
+            
+            // Update active state
+            document.querySelectorAll('.journey-stage').forEach(s => s.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) {
+                closeModal();
+            }
         }
     </script>
 </body>
