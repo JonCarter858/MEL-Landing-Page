@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Ziebart Franchise Development - Market Intelligence Dashboard for automotive aftermarket franchise opportunities">
+    <meta name="keywords" content="Ziebart, franchise, automotive, business opportunity, market intelligence">
+    <meta name="author" content="Ziebart Franchise Development">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ziebart-intelligence.netlify.app/">
+    <meta property="og:title" content="Ziebart Franchise Development - Market Intelligence Dashboard">
+    <meta property="og:description" content="Strategic insights for franchise development in the $500B+ automotive aftermarket">
+    <meta property="og:image" content="https://ziebart-intelligence.netlify.app/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ziebart-intelligence.netlify.app/">
+    <meta property="twitter:title" content="Ziebart Franchise Development Dashboard">
+    <meta property="twitter:description" content="Strategic insights for franchise development in the $500B+ automotive aftermarket">
+    
+    <title>Ziebart Franchise Development - Market Intelligence Dashboard</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKqqAP+qqgD/qqoA/6qqAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1KkT/9SpE//UqRP/1KkT/9SpE//UqRP/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1KkT/9SpE//UqRP/1KkT/9SpE//UqRP/1KkT/9SpE/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1KkT/9SpE//UqRP/1KkT/9SpE//UqRP/1KkT/9SpE/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1KkT/9SpE//UqRP/1KkT/9SpE//UqRP/1KkT/9SpE/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1KkT/9SpE//UqRP/1KkT/9SpE//UqRP/1KkT/9SpE/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1KkT/9SpE//UqRP/1KkT/9SpE//UqRP/1KkT/9SpE/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1KkT/9SpE//UqRP/1KkT/9SpE//UqRP/1KkT/9SpE/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1KkT/9SpE//UqRP/1KkT/9SpE//UqRP/1KkT/9SpE/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1KkT/9SpE//UqRP/1KkT/9SpE//UqRP/1KkT/9SpE/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1KkT/9SpE//UqRP/1KkT/9SpE//UqRP/1KkT/9SpE/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/1KkT/9SpE//UqRP/1KkT/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1KkT/9SpE//UqRP/1KkT/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/UqRP/1KkT/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px 40px;
+            border-bottom: 3px solid #d4af37;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: #d4af37;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            color: #1a1a2e;
+        }
+
+        .brand-title {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            padding: 0 40px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-tab:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: #d4af37;
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background: #d4af37;
+            color: #1a1a2e;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 40px;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Overview Section */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            color: #888;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-detail {
+            margin-top: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        /* Avatar Grid */
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .avatar-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .avatar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.25);
+            border-color: #d4af37;
+        }
+
+        .avatar-header {
+            background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+            padding: 25px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .avatar-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar-initials {
+            width: 60px;
+            height: 60px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            color: #1a1a2e;
+            margin-right: 15px;
+        }
+
+        .avatar-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .avatar-info p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .awareness-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            font-size: 11px;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .avatar-body {
+            padding: 25px;
+        }
+
+        .avatar-section {
+            margin-bottom: 25px;
+        }
+
+        .avatar-section h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #d4af37;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .avatar-list {
+            list-style: none;
+        }
+
+        .avatar-list li {
+            padding: 6px 0;
+            font-size: 14px;
+            color: #ccc;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .avatar-list li:before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+        }
+
+        /* Journey Visualization */
+        .journey-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .journey-stage {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin: 0 10px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .journey-stage:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .journey-stage.active {
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
+        }
+
+        .stage-icon {
+            width: 60px;
+            height: 60px;
+            background: #d4af37;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #1a1a2e;
+        }
+
+        .stage-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .stage-description {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.4;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+            margin: 2% auto;
+            padding: 40px;
+            border: 1px solid #d4af37;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 1100px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #d4af37;
+        }
+
+        /* Creative Concepts */
+        .creative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .creative-card {
+            background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .creative-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .creative-title {
+            font-size: 18px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .creative-format {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .creative-copy {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .copy-element {
+            margin-bottom: 10px;
+        }
+
+        .copy-label {
+            font-size: 12px;
+            color: #d4af37;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .copy-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        /* Diary Entry */
+        .diary-entry {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid #d4af37;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .diary-date {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .diary-content {
+            font-style: italic;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 15px;
+            text-align: left;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #d4af37;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* CTA Buttons */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #d4af37;
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+        }
+
+        /* D2F2 Grid */
+        .d2f2-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .d2f2-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .d2f2-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #d4af37;
+        }
+
+        .d2f2-list {
+            list-style: none;
+        }
+
+        .d2f2-list li {
+            padding: 8px 0;
+            font-size: 14px;
+            color: #ccc;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .d2f2-list li:before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .brand-title {
+                font-size: 18px;
+            }
+
+            .nav-tabs {
+                gap: 10px;
+                padding: 0 20px;
+            }
+
+            .nav-tab {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .main-content {
+                padding: 0 20px;
+            }
+            
+            .journey-flow {
+                flex-direction: column;
+            }
+            
+            .journey-stage {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+            .avatar-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .creative-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 5% 10px;
+                padding: 20px;
+                width: calc(100% - 20px);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .nav-tabs,
+            .cta-button {
+                display: none;
+            }
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            width: 80px;
+            height: 80px;
+            background: #d4af37;
+            border-radius: 12px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #1a1a2e;
+            font-weight: bold;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">Z</div>
+            <p style="color: #d4af37;">Loading Market Intelligence...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">Z</div>
+                <div>
+                    <div class="brand-title">Ziebart Franchise Development</div>
+                    <div class="brand-subtitle">Market Intelligence Dashboard</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <div class="nav-tabs">
+        <div class="nav-tab active" onclick="showSection('overview')">Executive Overview</div>
+        <div class="nav-tab" onclick="showSection('avatars')">Complete Avatars</div>
+        <div class="nav-tab" onclick="showSection('journey')">Customer Journey</div>
+        <div class="nav-tab" onclick="showSection('diaries')">Diary Insights</div>
+        <div class="nav-tab" onclick="showSection('creative')">Creative Concepts</div>
+        <div class="nav-tab" onclick="showSection('engagement')">Engagement Strategy</div>
+        <div class="nav-tab" onclick="showSection('d2f2')">D2F2 Analysis</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Executive Overview Section -->
+        <div id="overview" class="section active">
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Market Intelligence Overview</h2>
+            <p style="color: #888; margin-bottom: 30px;">Strategic insights for franchise development in the $500B+ automotive aftermarket</p>
+            
+            <div class="overview-grid">
+                <div class="metric-card">
+                    <div class="metric-value">$500B+</div>
+                    <div class="metric-label">Market Opportunity</div>
+                    <div class="metric-detail">Growing automotive aftermarket with recession-resistant demand patterns</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">5</div>
+                    <div class="metric-label">Target Personas</div>
+                    <div class="metric-detail">Comprehensive profiles from unaware to most aware prospects</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">East</div>
+                    <div class="metric-label">Primary Growth Region</div>
+                    <div class="metric-detail">East of Mississippi markets with established infrastructure</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">12-18mo</div>
+                    <div class="metric-label">Decision Timeline</div>
+                    <div class="metric-detail">Average journey from awareness to franchise agreement</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complete Avatars Section -->
+        <div id="avatars" class="section">
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Complete Avatar Profiles</h2>
+            <p style="color: #888; margin-bottom: 30px;">Detailed personas with full psychographic and behavioral analysis</p>
+            
+            <div class="avatar-grid" id="avatarGrid">
+                <!-- Avatar cards will be dynamically generated -->
+            </div>
+        </div>
+
+        <!-- Journey Section -->
+        <div id="journey" class="section">
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Customer Journey Mapping</h2>
+            <p style="color: #888; margin-bottom: 30px;">Strategic progression from awareness to franchise ownership</p>
+            
+            <div class="journey-flow">
+                <div class="journey-stage" onclick="showJourneyDetail('unaware')">
+                    <div class="stage-icon">?</div>
+                    <div class="stage-title">Unaware</div>
+                    <div class="stage-description">Restless professionals seeking equity</div>
+                </div>
+                <div class="journey-stage" onclick="showJourneyDetail('problem')">
+                    <div class="stage-icon">!</div>
+                    <div class="stage-title">Problem Aware</div>
+                    <div class="stage-description">Recognizing W-2 limitations</div>
+                </div>
+                <div class="journey-stage" onclick="showJourneyDetail('solution')">
+                    <div class="stage-icon">🔍</div>
+                    <div class="stage-title">Solution Aware</div>
+                    <div class="stage-description">Evaluating franchise models</div>
+                </div>
+                <div class="journey-stage" onclick="showJourneyDetail('product')">
+                    <div class="stage-icon">⚖</div>
+                    <div class="stage-title">Product Aware</div>
+                    <div class="stage-description">Comparing Ziebart</div>
+                </div>
+                <div class="journey-stage" onclick="showJourneyDetail('most')">
+                    <div class="stage-icon">✓</div>
+                    <div class="stage-title">Most Aware</div>
+                    <div class="stage-description">Ready to sign</div>
+                </div>
+            </div>
+            
+            <div id="journey-details" style="margin-top: 40px; padding: 30px; background: rgba(255, 255, 255, 0.05); border-radius: 12px;">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">Journey Stage Strategy</h3>
+                <p style="color: #888;">Click any stage above to explore detailed tactics and messaging.</p>
+            </div>
+        </div>
+
+        <!-- Diary Insights Section -->
+        <div id="diaries" class="section">
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Persona Diary Insights</h2>
+            <p style="color: #888; margin-bottom: 30px;">Authentic inner dialogue revealing emotional triggers</p>
+            <div id="diaryContent"></div>
+        </div>
+
+        <!-- Creative Concepts Section -->
+        <div id="creative" class="section">
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Creative Concepts & Copy</h2>
+            <p style="color: #888; margin-bottom: 30px;">Campaign-ready creative with specific copy for each awareness stage</p>
+            <div class="creative-grid" id="creativeGrid"></div>
+        </div>
+
+        <!-- Engagement Strategy Section -->
+        <div id="engagement" class="section">
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Engagement Strategy</h2>
+            <p style="color: #888; margin-bottom: 30px;">Stage-specific tactics to move prospects through the franchise decision journey</p>
+            <div id="engagementContent"></div>
+        </div>
+
+        <!-- D2F2 Analysis Section -->
+        <div id="d2f2" class="section">
+            <h2 style="font-size: 32px; margin-bottom: 10px;">Dreams, Desires, Fears & Frustrations</h2>
+            <p style="color: #888; margin-bottom: 30px;">Deep psychological drivers influencing franchise decisions</p>
+            <div class="d2f2-grid" id="d2f2Grid"></div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // Application Data
+        const appData = {
+            avatars: [
+                {
+                    id: 'taylor',
+                    initials: 'TN',
+                    name: 'Taylor Nguyen',
+                    role: 'Senior Operations Manager',
+                    awareness: 'Problem Aware',
+                    location: 'Phoenix, AZ • $115K + bonus • 10+ years logistics',
+                    psychographics: ['Analytical, pragmatic, achievement-oriented', 'Family-centered, quietly competitive', 'Values: Financial freedom, craftsmanship, reliability'],
+                    painPoints: ['Income tied to corporate volatility', 'Building someone else\'s asset', 'Analysis paralysis on ownership models'],
+                    secretDesire: 'Become the reliable operator in town with a shop people trust, building a legacy asset.',
+                    media: ['Books: E-Myth, Atomic Habits, Built to Sell', 'Podcasts: My First Million, Acquisitions Anonymous', 'Influencers: Marcus Lemonis, Alex Hormozi']
+                },
+                {
+                    id: 'miguel',
+                    initials: 'MA',
+                    name: 'Miguel Alvarez',
+                    role: 'Independent Shop Owner',
+                    awareness: 'Solution Aware',
+                    location: 'Albuquerque, NM • $90-110K draw • 2-bay detailing/PPF',
+                    psychographics: ['Systems-minded craftsman with pride', 'Competitive but steady under pressure', 'Values: Reputation, fair pricing, apprenticeship'],
+                    painPoints: ['Growth stalled, inconsistent lead flow', 'Hiring/training gaps, tech turnover', 'Weak vendor leverage, no fleet access'],
+                    secretDesire: 'Transform into a regional multi-location operation without losing quality.',
+                    media: ['Books: Traction, Profit First, The Goal', 'YouTube: AMMO NYC, Pan The Organizer', 'Forums: r/AutoDetailing, SEMA news']
+                },
+                {
+                    id: 'jordan',
+                    initials: 'JP',
+                    name: 'Jordan Patel',
+                    role: 'Multi-Unit Franchisee',
+                    awareness: 'Product Aware',
+                    location: 'Boise, ID • $160-190K draw • 2 franchise units',
+                    psychographics: ['Strategic, data-driven, disciplined', 'Brand-conscious portfolio builder', 'Values: Operational excellence, scalability'],
+                    painPoints: ['Choosing wrong banner with weak support', 'Territory protections and encroachment', 'Proving ROI beyond royalties'],
+                    secretDesire: 'Build 3-5 location portfolio in 36 months, then step into area coach role.',
+                    evaluationCriteria: ['FDD Item 7/19 deep analysis', 'Multi-unit operator references', 'Territory mapping and demographics']
+                },
+                {
+                    id: 'casey',
+                    initials: 'CB',
+                    name: 'Casey Brooks',
+                    role: 'Used-Car Lot Co-Owner',
+                    awareness: 'Most Aware',
+                    location: 'Salt Lake City, UT • $140-170K • Ready to sign',
+                    psychographics: ['Operator mindset, numbers-first', 'Community-focused, steady executor', 'Values: Transparency, predictable systems'],
+                    finalConcerns: ['Site selection and build-out timing', 'Hiring GM and lead technician', 'Pre-opening marketing integration'],
+                    secretDesire: 'Build flagship Ziebart for Wasatch Front, then two more in 30 months.',
+                    decisionDrivers: ['Territory confirmation and protection', 'Launch support team availability', 'Equipment lead times and financing']
+                },
+                {
+                    id: 'riley',
+                    initials: 'RC',
+                    name: 'Riley Carter',
+                    role: 'Enterprise SaaS Executive',
+                    awareness: 'Unaware',
+                    location: 'Denver, CO • $130K + commission • Details his Tacoma',
+                    psychographics: ['Curious, status-conscious, restless', 'Analytical but skeptical of hype', 'Values: Family time, financial independence'],
+                    underlyingPain: ['Volatile commissions, no equity', 'Travel fatigue, missing family events', 'Building someone else\'s ARR'],
+                    unconsciousDesire: 'Own a tangible, boring-beautiful business that compounds over 10+ years.',
+                    bridgeToAwareness: ['Already values vehicle care personally', 'Interested in "boring businesses"', 'Needs equity narrative, not franchise pitch']
+                }
+            ],
+
+            diaries: [
+                {
+                    name: 'Taylor Nguyen - Thursday Evening',
+                    location: 'Home Office - Phoenix, AZ',
+                    content: `Another reorg announcement today. Third one in two years. My spreadsheet shows I've saved enough for a down payment on... something. But what? Every franchise website feels like a carnival barker. Every indie path feels like reinventing the wheel. I keep driving past that ceramic coating shop on Camelback—always busy, always cars waiting. There's something there. People protecting what they own. Simple. Repeatable. Not sexy, but steady. I need a model with training wheels, not hero worship. Tomorrow I'm blocking two hours to map out non-negotiables. No more circling. Time to test a thesis with real data, real reference calls. If I can run logistics for 500 SKUs, I can run a shop with 5 service types. The question isn't can I—it's which system gives me the best odds.`
+                },
+                {
+                    name: 'Miguel Alvarez - Saturday Morning',
+                    location: 'Shop Floor - Albuquerque, NM',
+                    content: `6 AM and I'm already here, mixing compounds. Love the craft, hate the chaos. Lost another tech to that franchise down on Montgomery—better pay, actual training path, benefits. My Yelp reviews beat theirs, but their parking lot stays fuller. It's the warranty cards. The national ads. The fleet accounts I can't crack. I'm tired of being David without a slingshot. Spent last night comparing franchise FDDs. Most are just logos and invoices. But a few... actual field support, vendor deals that would cut my costs 20%, marketing that doesn't drain my account for "testing." My wife asked what I want for our anniversary. I want Tuesday afternoons off. I want a system that runs when I'm not here. I want my name on something bigger than my name.`
+                },
+                {
+                    name: 'Jordan Patel - Sunday Evening',
+                    location: 'Home Study - Boise, ID',
+                    content: `Three FDDs spread across my desk. Ziebart, Competitor A, Competitor B. My CPA flagged the differences in Item 19. The attorneys marked territory language. But what I really need to know: who answers the phone at 7 PM when something breaks? Which ops manual is actually updated? Whose franchisees renew at 90%+ rates? The automotive protection space makes sense—recession-resistant, recurring revenue potential, growing vehicle ages. Ziebart has the history, but history doesn't equal execution. Tomorrow's calls: three multi-unit operators, two who converted from competitors, one who built from scratch. I need to hear exhaustion levels, not earnings claims. I need to know about Sunday mornings, not just Saturday nights. Territory 1432 could anchor the cluster. Time to stop analyzing and start interrogating.`
+                },
+                {
+                    name: 'Casey Brooks - Monday Morning',
+                    location: 'Lot Office - Salt Lake City, UT',
+                    content: `Contract's on my desk. Territory's confirmed. Financing approved. But I keep running the launch sequence in my head. Site selection—I've got three options, need boots on the ground this week. Hiring—my GM prospect from Denver is wavering, need backup options. Equipment lead times are 8 weeks; that puts us into February. Pre-opening marketing should start 45 days out. My reconditioning manager wants in as a minority partner—could solve the expertise gap. The only thing worse than not starting is starting wrong. I've built businesses before, but never with someone else's brand on the door. The support better be real. The playbook better be current. The field team better answer their phones. Time to stop planning and start building. Signing Wednesday. Grand opening in Q2. No looking back.`
+                },
+                {
+                    name: 'Riley Carter - Wednesday Night',
+                    location: 'Home Garage - Denver, CO',
+                    content: `9 PM and I'm detailing my Tacoma. Again. It's meditation, I guess. Tomorrow's another pipeline review where my "commits" might flip to "maybes" because procurement got cold feet. Six figures feels like treading water when it all hangs on some VP's mood. My neighbor just sold his HVAC business for 4x revenue. Four years, built it from nothing. Meanwhile, I'm building someone else's ARR. There's got to be something between corporate ladder and startup lottery. Something boring. Something that people need whether the economy's up or down. Something where the work you put in stays yours. I watch these YouTube channels about ceramic coating—oddly satisfying. Wonder what those shops actually make? Probably more stable than my commission swings. Maybe it's time to stop wondering and start researching. Real businesses. Real assets. Real equity.`
+                }
+            ],
+
+            creativeConceptsContent
